@@ -30,20 +30,7 @@ sanjeev = {
 }
 ```
 
----
 
-## Experience
-
-**AI & CyberSecurity Intern — SQ1 Security Pvt. Ltd.** &nbsp;`Jun 2025 – Nov 2025`
-
-| Pipeline | What was built |
-|:--|:--|
-| **Vulnerability Detection** | RAG pipeline for CVE pattern analysis with embedding-based semantic retrieval and automated patch suggestion |
-| **Policy Management** | Semantic classifier to auto-categorize and maintain structured organizational compliance repositories |
-| **OCR-to-LLM** | Fine-tuned Biomedical NER model for clinical entity extraction; RAG pipeline mapping entities to ICD diagnosis codes |
-| **MCP Server Integration** | Orchestration layer connecting multiple AI tools through a unified LLM interface via MCP protocol |
-
----
 
 ## Featured Projects
 
