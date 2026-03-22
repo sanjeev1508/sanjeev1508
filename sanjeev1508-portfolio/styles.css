@@ -1102,8 +1102,8 @@ ul { list-style: none; }
 }
 
 @media (max-width: 768px) {
-  .section { padding: 72px 0; }
-  .section-title { font-size: 2.1rem; }
+  .section { padding: 60px 0; }
+  .section-title { font-size: 2rem; }
 
   .nav-links { display: none; }
   .nav-hamburger { display: block; }
@@ -1120,23 +1120,35 @@ ul { list-style: none; }
     box-shadow: var(--shadow-lg);
   }
 
-  .hero-inner { grid-template-columns: 1fr; gap: 48px; text-align: center; padding: 90px 28px 40px; }
+  .hero-inner { grid-template-columns: 1fr; gap: 40px; text-align: center; padding: 100px 15px 40px; }
   .hero-photo { order: -1; }
-  .photo-ring { width: 230px; height: 230px; }
-  .hero-text h1 { font-size: 2.7rem; }
-  .hero-buttons { justify-content: center; }
-  .hero-bio { margin: 0 auto 34px; }
+  .photo-ring { width: 200px; height: 200px; }
+  .hero-text h1 { font-size: 2.3rem; }
+  .hero-buttons { justify-content: center; flex-wrap: wrap; }
+  .hero-bio { margin: 0 auto 30px; }
 
   .about-wrap { grid-template-columns: 1fr; gap: 40px; }
   .about-stats-grid { grid-template-columns: 1fr 1fr; }
   .edu-grid { grid-template-columns: 1fr; }
 
-  .badge-1, .badge-2, .badge-3 { display: none; }
+  /* Project Card Mobile Fixes */
+  .proj-card-lg { flex-direction: column !important; }
+  .proj-card-top { flex-direction: column; align-items: flex-start; gap: 10px; }
+  .proj-card-content { padding: 24px !important; }
+
+  /* Contact Links */
+  .contact-links { flex-direction: column; align-items: stretch; }
+  .contact-links .btn { justify-content: center; }
+
+  .timeline-item { padding-left: 25px; }
+  .code-block { overflow-x: auto; padding: 20px; font-size: 0.75rem; }
 }
 
 @media (max-width: 480px) {
   .about-stats-grid { grid-template-columns: 1fr; }
-  .hero-text h1 { font-size: 2.2rem; }
+  .hero-text h1 { font-size: 2rem; }
+  .hero-buttons { flex-direction: column; }
+  .section-title { font-size: 1.8rem; }
 }
 
 /* ════════════════════════════════

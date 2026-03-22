@@ -110,11 +110,14 @@ document.addEventListener('DOMContentLoaded', () => {
                     let targetAngle = Math.atan2(dy, dx) * (180 / Math.PI) + 90;
                     let angleDiff = targetAngle - currentAngle;
                     angleDiff = (angleDiff + 540) % 360 - 180;
-                    currentAngle += angleDiff * 0.08;
+                    
+                    // Smooth, insect-like turning
+                    currentAngle += angleDiff * 0.05;
 
                     scorpRotator.style.transform = `rotate(${currentAngle}deg)`;
 
-                    const speed = 1.2;
+                    // Organic scurry speed
+                    const speed = 1.0;
                     posX += Math.cos((currentAngle - 90) * Math.PI / 180) * speed;
                     posY += Math.sin((currentAngle - 90) * Math.PI / 180) * speed;
 
@@ -124,7 +127,8 @@ document.addEventListener('DOMContentLoaded', () => {
                         xanCompanion.classList.remove('is-walking');
                         isWalking = false;
                         if (!xanModal.classList.contains('open')) {
-                            setTimeout(pickNewTarget, Math.random() * 4000 + 2000);
+                            // Wait between 3 and 8 seconds before crawling again
+                            setTimeout(pickNewTarget, Math.random() * 5000 + 3000);
                         }
                     }
                 }
