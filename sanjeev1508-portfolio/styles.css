@@ -1147,33 +1147,57 @@ ul { list-style: none; }
   top: 60px;
   right: 15%;
   z-index: 50;
-  animation: xan-roam 18s ease-in-out infinite alternate;
   cursor: pointer;
+  /* transition for JS movement */
+  transition: transform 0.5s linear;
 }
 
-@keyframes xan-roam {
-  0%   { transform: translate(0, 0) rotate(0deg); }
-  33%  { transform: translate(-50px, 60px) rotate(-5deg); }
-  66%  { transform: translate(30px, 120px) rotate(5deg); }
-  100% { transform: translate(-20px, 30px) rotate(-2deg); }
-}
-
-.xan-scorpio-wrap {
+#xan-scorpio-anim-container {
   position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-.xan-scorpio-img {
-  width: 90px;
-  height: auto;
-  mix-blend-mode: screen; 
-  filter: drop-shadow(0 0 10px rgba(124,58,237,.5));
-  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), filter 0.3s;
-}
+/* Base states */
+.sc-leg path { transition: transform 0.2s; }
+#scorp-rotator { transform-origin: 0 0; }
 
-.xan-companion:hover .xan-scorpio-img {
+/* The walking class toggled by JS */
+.xan-companion.is-walking .sc-leg.l1 { animation: sc-walk-l1 0.4s infinite alternate; }
+.xan-companion.is-walking .sc-leg.l2 { animation: sc-walk-l2 0.4s infinite alternate; }
+.xan-companion.is-walking .sc-leg.l3 { animation: sc-walk-l3 0.4s infinite alternate; }
+.xan-companion.is-walking .sc-leg.l4 { animation: sc-walk-l4 0.4s infinite alternate; }
+.xan-companion.is-walking .sc-leg.r1 { animation: sc-walk-r1 0.4s infinite alternate; }
+.xan-companion.is-walking .sc-leg.r2 { animation: sc-walk-r2 0.4s infinite alternate; }
+.xan-companion.is-walking .sc-leg.r3 { animation: sc-walk-r3 0.4s infinite alternate; }
+.xan-companion.is-walking .sc-leg.r4 { animation: sc-walk-r4 0.4s infinite alternate; }
+
+/* Leg sweep animations */
+@keyframes sc-walk-l1 { 0% { transform: rotate(-25deg); } 100% { transform: rotate(15deg); } }
+@keyframes sc-walk-l2 { 0% { transform: rotate(25deg); } 100% { transform: rotate(-15deg); } }
+@keyframes sc-walk-l3 { 0% { transform: rotate(-25deg); } 100% { transform: rotate(15deg); } }
+@keyframes sc-walk-l4 { 0% { transform: rotate(25deg); } 100% { transform: rotate(-15deg); } }
+@keyframes sc-walk-r1 { 0% { transform: rotate(25deg); } 100% { transform: rotate(-15deg); } }
+@keyframes sc-walk-r2 { 0% { transform: rotate(-25deg); } 100% { transform: rotate(15deg); } }
+@keyframes sc-walk-r3 { 0% { transform: rotate(25deg); } 100% { transform: rotate(-15deg); } }
+@keyframes sc-walk-r4 { 0% { transform: rotate(-25deg); } 100% { transform: rotate(15deg); } }
+
+/* Idle breathing / Arm sway */
+.sc-arm.left { animation: sc-arm-idle-l 2s infinite alternate ease-in-out; }
+.sc-arm.right { animation: sc-arm-idle-r 2s infinite alternate ease-in-out; }
+.sc-tail { animation: sc-tail-idle 2.5s infinite alternate ease-in-out; }
+
+/* Walking tail */
+.xan-companion.is-walking .sc-tail { animation: sc-tail-walk 0.5s infinite alternate ease-in-out; }
+
+@keyframes sc-arm-idle-l { 0% { transform: rotate(0deg); } 100% { transform: rotate(8deg); } }
+@keyframes sc-arm-idle-r { 0% { transform: rotate(0deg); } 100% { transform: rotate(-8deg); } }
+@keyframes sc-tail-idle { 0% { transform: rotate(-6deg); } 100% { transform: rotate(6deg); } }
+@keyframes sc-tail-walk { 0% { transform: rotate(-12deg); } 100% { transform: rotate(12deg); } }
+
+.xan-companion:hover #xan-scorpio-anim-container {
   transform: scale(1.15) translateY(-5px);
   filter: drop-shadow(0 0 15px rgba(6,182,212,.8));
 }

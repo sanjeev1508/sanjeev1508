@@ -61,8 +61,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     sections.forEach(sec => sectionObserver.observe(sec));
 
-    // ===== XAN CHAT COMPANION =====
+    // ===== XAN CHAT COMPANION & SCORPION ROAMING =====
     const xanCompanion = document.getElementById('xan-companion');
+    const scorpRotator = document.getElementById('scorp-rotator');
     const xanModal = document.getElementById('xan-chat-modal');
     const xanCloseBtn = document.getElementById('xan-close-btn');
     const xanInput = document.getElementById('xan-chat-input');
@@ -77,6 +78,70 @@ document.addEventListener('DOMContentLoaded', () => {
     ];
 
     if (xanCompanion && xanModal) {
+        // --- SCORPION ROAMING LOGIC ---
+        if (scorpRotator) {
+            let posX = window.innerWidth - 120;
+            let posY = window.innerHeight - 150;
+            let currentAngle = -45;
+            let targetX = posX;
+            let targetY = posY;
+            let isWalking = false;
+
+            // Optional fixed initialization
+            xanCompanion.style.position = 'fixed';
+            xanCompanion.style.top = '0';
+            xanCompanion.style.left = '0';
+            xanCompanion.style.bottom = 'auto';
+            xanCompanion.style.right = 'auto';
+            xanCompanion.style.transform = `translate(${posX}px, ${posY}px)`;
+            scorpRotator.style.transform = `rotate(${currentAngle}deg)`;
+
+            const updateScorpion = () => {
+                const dx = targetX - posX;
+                const dy = targetY - posY;
+                const dist = Math.sqrt(dx*dx + dy*dy);
+
+                if (dist > 5 && !xanModal.classList.contains('open')) {
+                    if (!isWalking) {
+                        xanCompanion.classList.add('is-walking');
+                        isWalking = true;
+                    }
+                    
+                    let targetAngle = Math.atan2(dy, dx) * (180 / Math.PI) + 90;
+                    let angleDiff = targetAngle - currentAngle;
+                    angleDiff = (angleDiff + 540) % 360 - 180;
+                    currentAngle += angleDiff * 0.08;
+
+                    scorpRotator.style.transform = `rotate(${currentAngle}deg)`;
+
+                    const speed = 1.2;
+                    posX += Math.cos((currentAngle - 90) * Math.PI / 180) * speed;
+                    posY += Math.sin((currentAngle - 90) * Math.PI / 180) * speed;
+
+                    xanCompanion.style.transform = `translate(${posX}px, ${posY}px)`;
+                } else {
+                    if (isWalking) {
+                        xanCompanion.classList.remove('is-walking');
+                        isWalking = false;
+                        if (!xanModal.classList.contains('open')) {
+                            setTimeout(pickNewTarget, Math.random() * 4000 + 2000);
+                        }
+                    }
+                }
+                requestAnimationFrame(updateScorpion);
+            };
+
+            const pickNewTarget = () => {
+                const margin = 80;
+                targetX = margin + Math.random() * (window.innerWidth - margin*2);
+                targetY = margin + Math.random() * (window.innerHeight - margin*2);
+            };
+
+            setTimeout(pickNewTarget, 2000);
+            requestAnimationFrame(updateScorpion);
+        }
+
+        // --- CHAT MODAL LOGIC ---
         xanCompanion.addEventListener('click', () => {
             xanModal.classList.add('open');
             xanInput.focus();

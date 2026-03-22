@@ -136,7 +136,79 @@
             <!-- ====== XAN COMPANION (SCORPION) ====== -->
             <div id="xan-companion" class="xan-companion" aria-label="Chat with Xan AI">
                 <div class="xan-scorpio-wrap">
-                    <img src="xan-scorpio.png" alt="Xan Scorpion" class="xan-scorpio-img">
+                    <div id="xan-scorpio-anim-container">
+                        <svg id="xan-scorpio-svg" viewBox="-80 -100 160 220" width="90" height="120">
+                            <defs>
+                                <filter id="neonGlow" x="-50%" y="-50%" width="200%" height="200%">
+                                    <feGaussianBlur in="SourceGraphic" stdDeviation="3" result="blur1" />
+                                    <feGaussianBlur in="SourceGraphic" stdDeviation="8" result="blur2" />
+                                    <feMerge>
+                                        <feMergeNode in="blur2" />
+                                        <feMergeNode in="blur1" />
+                                        <feMergeNode in="SourceGraphic" />
+                                    </feMerge>
+                                </filter>
+                                <linearGradient id="scorpGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" stop-color="#38bdf8" />
+                                    <stop offset="50%" stop-color="#7c3aed" />
+                                    <stop offset="100%" stop-color="#ec4899" />
+                                </linearGradient>
+                            </defs>
+                            
+                            <!-- Rotatable Wrapper -->
+                            <g id="scorp-rotator" filter="url(#neonGlow)" stroke="url(#scorpGrad)" stroke-width="2.5" fill="rgba(13,17,32,0.8)" stroke-linecap="round" stroke-linejoin="round">
+                                
+                                <!-- Left Legs -->
+                                <g transform="translate(-15, -10)"><g class="sc-leg l1"><path d="M0,0 L-25,-20 L-40,-5" fill="none"/></g></g>
+                                <g transform="translate(-16,   2)"><g class="sc-leg l2"><path d="M0,0 L-30,-5 L-45,15" fill="none"/></g></g>
+                                <g transform="translate(-15,  14)"><g class="sc-leg l3"><path d="M0,0 L-28,10 L-40,30" fill="none"/></g></g>
+                                <g transform="translate(-12,  26)"><g class="sc-leg l4"><path d="M0,0 L-20,20 L-30,45" fill="none"/></g></g>
+
+                                <!-- Right Legs -->
+                                <g transform="translate(15, -10)"><g class="sc-leg r1"><path d="M0,0 L25,-20 L40,-5" fill="none"/></g></g>
+                                <g transform="translate(16,   2)"><g class="sc-leg r2"><path d="M0,0 L30,-5 L45,15" fill="none"/></g></g>
+                                <g transform="translate(15,  14)"><g class="sc-leg r3"><path d="M0,0 L28,10 L40,30" fill="none"/></g></g>
+                                <g transform="translate(12,  26)"><g class="sc-leg r4"><path d="M0,0 L20,20 L30,45" fill="none"/></g></g>
+
+                                <!-- Left Arm & Pincer -->
+                                <g class="sc-arm left" transform="translate(-12, -25)">
+                                    <path d="M0,0 L-20,-25 L-10,-45" fill="none"/>
+                                    <!-- Inside claw articulated -->
+                                    <g transform="translate(-10, -45)">
+                                        <g class="sc-pincer-inner"><path d="M0,0 C-5,-10 5,-25 15,-20 C10,-15 5,-5 0,0" fill="rgba(56,189,248,0.3)"/></g>
+                                        <g class="sc-pincer-outer"><path d="M0,0 C-15,-10 -20,-25 -10,-35 C-5,-25 -5,-10 0,0" fill="rgba(124,58,237,0.3)"/></g>
+                                    </g>
+                                </g>
+
+                                <!-- Right Arm & Pincer -->
+                                <g class="sc-arm right" transform="translate(12, -25)">
+                                    <path d="M0,0 L20,-25 L10,-45" fill="none"/>
+                                    <g transform="translate(10, -45)">
+                                        <g class="sc-pincer-inner"><path d="M0,0 C5,-10 -5,-25 -15,-20 C-10,-15 -5,-5 0,0" fill="rgba(56,189,248,0.3)"/></g>
+                                        <g class="sc-pincer-outer"><path d="M0,0 C15,-10 20,-25 10,-35 C5,-25 5,-10 0,0" fill="rgba(124,58,237,0.3)"/></g>
+                                    </g>
+                                </g>
+
+                                <!-- Tail -->
+                                <g transform="translate(0, 30)">
+                                    <g class="sc-tail">
+                                        <path d="M0,0 Q10,15 0,35 Q-10,55 0,80" fill="none" stroke-width="4"/>
+                                        <path d="M-6,80 L6,80 L0,105 Z" fill="rgba(56,189,248,0.5)" />
+                                    </g>
+                                </g>
+
+                                <!-- Body -->
+                                <path d="M-12,-25 Q0,-35 12,-25 L16,15 Q0,40 -16,15 Z" />
+                                
+                                <!-- Core/Heart -->
+                                <path d="M-6,-15 L6,-15 L10,5 L0,20 L-10,5 Z" fill="rgba(124,58,237,0.4)" stroke-width="1.5"/>
+
+                                <!-- Cyber Eyes -->
+                                <circle cx="-5" cy="-22" r="2.5" fill="#38bdf8" stroke="none" />
+                                <circle cx="5" cy="-22" r="2.5" fill="#38bdf8" stroke="none" />
+                            </g>
+                        </svg>
+                    </div>
                     <span class="xan-tooltip">Ask <strong>Xan</strong></span>
                 </div>
             </div>
