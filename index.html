@@ -1,104 +1,306 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio - Sanjeevikumar S</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Sanjeevikumar S | AI Engineer × CyberSecurity</title>
+    <meta name="description" content="Portfolio of Sanjeevikumar S – AI Engineer, LLM Systems, AI × CyberSecurity.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Outfit:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
-    <!-- Navigation -->
-    <nav class="navbar">
-        <div class="container">
-            <div class="nav-brand">Portfolio</div>
-            <ul class="nav-menu">
-                <li><a href="#home" class="nav-link">Home</a></li>
-                <li><a href="#about" class="nav-link">About</a></li>
-                <li><a href="#skills" class="nav-link">Skills</a></li>
-                <li><a href="#projects" class="nav-link">Projects</a></li>
+
+    <!-- ====== NAVBAR ====== -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-inner">
+            <a class="nav-brand" href="#hero">
+                <img src="https://avatars.githubusercontent.com/u/148964317?v=4" alt="Avatar" class="nav-avatar">
+                <span>Sanjeevikumar S</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#contact" class="nav-cta">Contact</a></li>
             </ul>
-            <div class="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
+            <button class="nav-hamburger" id="hamburger" aria-label="Toggle menu">
+                <i class="fa-solid fa-bars"></i>
+            </button>
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="container">
-            <div class="hero-content">
-                <div class="hero-text">
-                    <h1 class="hero-title">
-                        <span class="greeting">Hi, I'm</span>
-                        <span class="name">Sanjeevikumar S</span>
-                    </h1>
-                    <p class="hero-subtitle">AI & ML Engineer | Security Researcher | Python Developer</p>
-                    <p class="hero-description">
-                        Motivated individual with a solid foundation in AI and ML, looking for an opportunity 
-                        to apply my skills and contribute to meaningful projects. Passionate about building 
-                        intelligent systems and security solutions.
-                    </p>
-                    <div class="hero-buttons">
-                        <a href="#projects" class="btn btn-primary">View My Work</a>
-                        <a href="https://github.com/sanjeev1508" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">Explore GitHub</a>
-                    </div>
-                    <div class="social-links">
-                        <a href="https://www.linkedin.com/in/sanjeevikumar-s-737951282" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-                        <a href="https://github.com/sanjeev1508" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="GitHub"><i class="fab fa-github"></i></a>
-                    </div>
+    <!-- ====== HERO ====== -->
+    <section id="hero" class="hero">
+        <div class="hero-blob blob-1"></div>
+        <div class="hero-blob blob-2"></div>
+        <div class="dot-grid"></div>
+        <div class="hero-inner">
+            <div class="hero-text reveal">
+                <h1>Hi, I'm <span class="gradient-text">Sanjeevikumar S</span></h1>
+                <p class="hero-role">AI Nerd</p>
+                <p class="hero-bio">
+                    Persistent AI and Data Science professional applying solutions to CyberSecurity data challenges —
+                    building systems that are hard to fool, hard to drift, and easy to trust.
+                </p>
+                <div class="hero-buttons">
+                    <a href="#projects" class="btn btn-primary">View My Work</a>
+                    <a href="Sanjeevikumar_S_Resume.pdf" target="_blank" class="btn btn-outline" download>
+                        <i class="fa-regular fa-file-pdf"></i> Resume
+                    </a>
+                    <a href="https://github.com/sanjeev1508" target="_blank" class="btn btn-outline">
+                        <i class="fa-brands fa-github"></i> GitHub
+                    </a>
+                    <a href="https://www.linkedin.com/in/sanjeevikumar-s-737951282/" target="_blank"
+                        class="btn btn-outline">
+                        <i class="fa-brands fa-linkedin"></i> LinkedIn
+                    </a>
                 </div>
-                <div class="hero-image">
-                    <div class="image-wrapper">
-                        <img src="my_picture.JPG" alt="Sanjeevikumar S" class="profile-image">
-                        <div class="image-border"></div>
-                    </div>
+            </div>
+            <div class="hero-photo reveal" style="animation-delay:.15s">
+                <div class="photo-ring">
+                    <img src="https://avatars.githubusercontent.com/u/148964317?v=4" alt="Sanjeevikumar S">
                 </div>
             </div>
         </div>
-        <div class="scroll-indicator">
-            <a href="#about"><i class="fas fa-chevron-down"></i></a>
-        </div>
+        <!-- Scroll cue -->
+        <a href="#about" class="scroll-cue" aria-label="Scroll down">
+            <i class="fa-solid fa-chevron-down"></i>
+        </a>
     </section>
 
-    <!-- About Section -->
-    <section id="about" class="about">
+    <!-- ====== ABOUT ====== -->
+    <section id="about" class="section about-section">
         <div class="container">
-            <h2 class="section-title">About Me</h2>
-            <div class="about-content">
-                <div class="about-image">
-                    <img src="my_picture.JPG" alt="About Me" class="about-img">
-                </div>
-                <div class="about-text">
+            <div class="about-wrap reveal">
+                <div class="about-left">
+                    <div class="section-label">Who I Am</div>
+                    <h2>Building AI That <span class="gradient-text">Earns Trust</span></h2>
                     <p>
-                        I'm a motivated individual with a solid foundation in Artificial Intelligence and 
-                        Machine Learning. My passion lies in developing intelligent systems that solve 
-                        real-world problems, particularly in the domains of cybersecurity, natural language 
-                        processing, and data analysis.
+                        Final-year M.Sc. AI &amp; ML student (CGPA: 8.63) building LLM-aligned, agentic, and
+                        security-focused AI systems — with hands-on internship experience and national hackathon wins.
                     </p>
-                    <p>
-                        I specialize in building AI-driven solutions, from SOC monitoring tools to sentiment 
-                        analysis systems. My work focuses on creating robust, scalable applications using 
-                        Python and modern ML frameworks. I'm always eager to contribute to meaningful projects 
-                        and collaborate with teams that value innovation and impact.
-                    </p>
-                    <div class="about-stats">
-                        <div class="stat-item">
-                            <h3>16+</h3>
-                            <p>GitHub Repositories</p>
+                    <div class="about-contacts">
+                        <a href="mailto:sanjeevikumar15@gmail.com"><i class="fa-regular fa-envelope"></i>
+                            sanjeevikumar15@gmail.com</a>
+                        <span><i class="fa-solid fa-location-dot"></i> Coimbatore, Tamil Nadu</span>
+                    </div>
+                </div>
+                <div class="about-right">
+                    <div class="about-stats-grid">
+                        <div class="about-stat-card">
+                            <i class="fa-solid fa-code-branch icon-accent"></i>
+                            <span class="stat-num">18</span>
+                            <span class="stat-lbl">GitHub Repos</span>
                         </div>
-                        <div class="stat-item">
-                            <h3>6</h3>
-                            <p>Featured Projects</p>
+                        <div class="about-stat-card">
+                            <i class="fa-solid fa-trophy icon-gold"></i>
+                            <span class="stat-num">3</span>
+                            <span class="stat-lbl">National Wins</span>
                         </div>
-                        <div class="stat-item">
-                            <h3>AI/ML</h3>
-                            <p>Specialization</p>
+                        <div class="about-stat-card">
+                            <i class="fa-solid fa-shield-halved icon-blue"></i>
+                            <span class="stat-num">4+</span>
+                            <span class="stat-lbl">AI Security Projects</span>
+                        </div>
+                        <div class="about-stat-card">
+                            <i class="fa-solid fa-graduation-cap icon-purple"></i>
+                            <span class="stat-num">8.63</span>
+                            <span class="stat-lbl">CGPA (Sem 7)</span>
+                        </div>
+                    </div>
+                    <!-- whoami snippet -->
+                    <div class="code-block">
+                        <pre><code><span class="code-var">sanjeev</span> <span class="code-op">=</span> {
+  <span class="code-key">"role"</span>: <span class="code-str">"AI/ML Engineer"</span>,
+  <span class="code-key">"focus"</span>: [
+             <span class="code-str">"Intelligent Systems"</span>, 
+             <span class="code-str">"Machine Learning"</span>,
+             <span class="code-str">"Applied AI"</span>, 
+             <span class="code-str">"Scalable Solutions"</span>
+           ],
+  <span class="code-key">"strengths"</span>: [
+             <span class="code-str">"End-to-End Development"</span>,
+             <span class="code-str">"Problem Solving"</span>,
+             <span class="code-str">"Automation"</span>,
+             <span class="code-str">"System Design"</span>
+           ],
+  <span class="code-key">"currently"</span>: <span class="code-str">"Building impactful AI systems for real-world applications"</span>
+}</code></pre>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ====== XAN COMPANION (SCORPION) ====== -->
+            <div id="xan-companion" class="xan-companion" aria-label="Chat with Xan AI">
+                <div class="xan-scorpio-wrap">
+                    <div id="xan-scorpio-anim-container">
+                        <svg id="xan-scorpio-svg" viewBox="-80 -100 160 220" width="90" height="120">
+                            <defs>
+                                <filter id="neonGlow" x="-50%" y="-50%" width="200%" height="200%">
+                                    <feGaussianBlur in="SourceGraphic" stdDeviation="3" result="blur1" />
+                                    <feGaussianBlur in="SourceGraphic" stdDeviation="8" result="blur2" />
+                                    <feMerge>
+                                        <feMergeNode in="blur2" />
+                                        <feMergeNode in="blur1" />
+                                        <feMergeNode in="SourceGraphic" />
+                                    </feMerge>
+                                </filter>
+                                <linearGradient id="scorpGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" stop-color="#38bdf8" />
+                                    <stop offset="50%" stop-color="#7c3aed" />
+                                    <stop offset="100%" stop-color="#ec4899" />
+                                </linearGradient>
+                            </defs>
+
+                            <!-- Rotatable Wrapper -->
+                            <g id="scorp-rotator" filter="url(#neonGlow)" stroke="url(#scorpGrad)" stroke-width="2.5"
+                                fill="rgba(13,17,32,0.8)" stroke-linecap="round" stroke-linejoin="round">
+
+                                <!-- Left Legs -->
+                                <g transform="translate(-15, -10)">
+                                    <g class="sc-leg l1">
+                                        <path d="M0,0 L-25,-20 L-40,-5" fill="none" />
+                                    </g>
+                                </g>
+                                <g transform="translate(-16,   2)">
+                                    <g class="sc-leg l2">
+                                        <path d="M0,0 L-30,-5 L-45,15" fill="none" />
+                                    </g>
+                                </g>
+                                <g transform="translate(-15,  14)">
+                                    <g class="sc-leg l3">
+                                        <path d="M0,0 L-28,10 L-40,30" fill="none" />
+                                    </g>
+                                </g>
+                                <g transform="translate(-12,  26)">
+                                    <g class="sc-leg l4">
+                                        <path d="M0,0 L-20,20 L-30,45" fill="none" />
+                                    </g>
+                                </g>
+
+                                <!-- Right Legs -->
+                                <g transform="translate(15, -10)">
+                                    <g class="sc-leg r1">
+                                        <path d="M0,0 L25,-20 L40,-5" fill="none" />
+                                    </g>
+                                </g>
+                                <g transform="translate(16,   2)">
+                                    <g class="sc-leg r2">
+                                        <path d="M0,0 L30,-5 L45,15" fill="none" />
+                                    </g>
+                                </g>
+                                <g transform="translate(15,  14)">
+                                    <g class="sc-leg r3">
+                                        <path d="M0,0 L28,10 L40,30" fill="none" />
+                                    </g>
+                                </g>
+                                <g transform="translate(12,  26)">
+                                    <g class="sc-leg r4">
+                                        <path d="M0,0 L20,20 L30,45" fill="none" />
+                                    </g>
+                                </g>
+
+                                <!-- Left Arm & Pincer -->
+                                <g class="sc-arm left" transform="translate(-12, -25)">
+                                    <path d="M0,0 L-20,-25 L-10,-45" fill="none" />
+                                    <!-- Inside claw articulated -->
+                                    <g transform="translate(-10, -45)">
+                                        <g class="sc-pincer-inner">
+                                            <path d="M0,0 C-5,-10 5,-25 15,-20 C10,-15 5,-5 0,0"
+                                                fill="rgba(56,189,248,0.3)" />
+                                        </g>
+                                        <g class="sc-pincer-outer">
+                                            <path d="M0,0 C-15,-10 -20,-25 -10,-35 C-5,-25 -5,-10 0,0"
+                                                fill="rgba(124,58,237,0.3)" />
+                                        </g>
+                                    </g>
+                                </g>
+
+                                <!-- Right Arm & Pincer -->
+                                <g class="sc-arm right" transform="translate(12, -25)">
+                                    <path d="M0,0 L20,-25 L10,-45" fill="none" />
+                                    <g transform="translate(10, -45)">
+                                        <g class="sc-pincer-inner">
+                                            <path d="M0,0 C5,-10 -5,-25 -15,-20 C-10,-15 -5,-5 0,0"
+                                                fill="rgba(56,189,248,0.3)" />
+                                        </g>
+                                        <g class="sc-pincer-outer">
+                                            <path d="M0,0 C15,-10 20,-25 10,-35 C5,-25 5,-10 0,0"
+                                                fill="rgba(124,58,237,0.3)" />
+                                        </g>
+                                    </g>
+                                </g>
+
+                                <!-- Tail -->
+                                <g transform="translate(0, 30)">
+                                    <g class="sc-tail">
+                                        <path d="M0,0 Q10,15 0,35 Q-10,55 0,80" fill="none" stroke-width="4" />
+                                        <path d="M-6,80 L6,80 L0,105 Z" fill="rgba(56,189,248,0.5)" />
+                                    </g>
+                                </g>
+
+                                <!-- Body -->
+                                <path d="M-12,-25 Q0,-35 12,-25 L16,15 Q0,40 -16,15 Z" />
+
+                                <!-- Core/Heart -->
+                                <path d="M-6,-15 L6,-15 L10,5 L0,20 L-10,5 Z" fill="rgba(124,58,237,0.4)"
+                                    stroke-width="1.5" />
+
+                                <!-- Cyber Eyes -->
+                                <circle cx="-5" cy="-22" r="2.5" fill="#38bdf8" stroke="none" />
+                                <circle cx="5" cy="-22" r="2.5" fill="#38bdf8" stroke="none" />
+                            </g>
+                        </svg>
+                    </div>
+                    <span class="xan-tooltip">Ask <strong>Xan</strong></span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ====== EXPERIENCE ====== -->
+    <section id="experience" class="section experience-section">
+        <div class="container">
+            <h2 class="section-title reveal">Work <span class="gradient-text">Experience</span></h2>
+            <div class="timeline reveal">
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-card">
+                        <div class="tc-header">
+                            <div>
+                                <h3>AI and CyberSecurity Intern</h3>
+                                <h4><a href="https://sq1.security/" target="_blank" rel="noopener"
+                                        style="color:inherit;text-decoration:none;border-bottom:1.5px dotted currentColor;">SQ1
+                                        Security Private Limited</a></h4>
+                            </div>
+                            <span class="tc-date"><i class="fa-regular fa-calendar"></i> Jun 2025 – Nov 2025</span>
+                        </div>
+                        <p class="tc-summary">Worked across AI, NLP, RAG, and Security pipelines — applying LLMs to
+                            real-world CyberSecurity and compliance challenges.</p>
+                        <div class="domain-bubbles">
+                            <span class="domain-bubble"><i class="fa-solid fa-shield-halved"></i> Vulnerability
+                                Detection</span>
+                            <span class="domain-bubble"><i class="fa-solid fa-file-shield"></i> Policy
+                                Classification</span>
+                            <span class="domain-bubble"><i class="fa-solid fa-magnifying-glass"></i> Semantic
+                                Retrieval</span>
+                            <span class="domain-bubble"><i class="fa-solid fa-file-medical"></i> Biomedical NER</span>
+                            <span class="domain-bubble"><i class="fa-solid fa-diagram-project"></i> RAG Pipelines</span>
+                            <span class="domain-bubble"><i class="fa-solid fa-robot"></i> Agentic Workflows</span>
+                            <span class="domain-bubble"><i class="fa-solid fa-server"></i> MCP Integration</span>
+                            <span class="domain-bubble"><i class="fa-solid fa-code"></i> CVE Analysis</span>
+                            <span class="domain-bubble"><i class="fa-solid fa-layer-group"></i> LLM Orchestration</span>
+                            <span class="domain-bubble"><i class="fa-solid fa-memo-circle-check"></i> ICD Code
+                                Mapping</span>
                         </div>
                     </div>
                 </div>
@@ -106,198 +308,321 @@
         </div>
     </section>
 
-    <!-- Skills Section -->
-    <section id="skills" class="skills">
+    <!-- ====== PROJECTS ====== -->
+    <section id="projects" class="section projects-section">
         <div class="container">
-            <h2 class="section-title">Skills & Technologies</h2>
-            <div class="skills-grid">
-                <div class="skill-category">
-                    <h3>AI & Machine Learning</h3>
-                    <div class="skill-items">
-                        <div class="skill-item">
-                            <i class="fas fa-brain"></i>
-                            <span>Machine Learning</span>
-                        </div>
-                        <div class="skill-item">
-                            <i class="fas fa-robot"></i>
-                            <span>AI Systems</span>
-                        </div>
-                        <div class="skill-item">
-                            <i class="fas fa-language"></i>
-                            <span>NLP</span>
-                        </div>
-                        <div class="skill-item">
-                            <i class="fas fa-chart-bar"></i>
-                            <span>Data Analysis</span>
-                        </div>
-                        <div class="skill-item">
-                            <i class="fas fa-search"></i>
-                            <span>RAG Systems</span>
+            <h2 class="section-title reveal">Featured <span class="gradient-text">Projects</span></h2>
+
+            <div class="projects-featured reveal">
+                <!-- Featured Large Card -->
+                <div class="proj-card proj-card-lg">
+                    <div class="proj-card-top">
+                        <span class="proj-badge">LLM Alignment</span>
+                        <div class="proj-links">
+                            <a href="https://github.com/sanjeev1508/Model-Deviation-Summarizer" target="_blank"
+                                title="GitHub Repo"><i class="fa-brands fa-github"></i></a>
                         </div>
                     </div>
-                </div>
-                <div class="skill-category">
-                    <h3>Programming & Frameworks</h3>
-                    <div class="skill-items">
-                        <div class="skill-item">
-                            <i class="fab fa-python"></i>
-                            <span>Python</span>
-                        </div>
-                        <div class="skill-item">
-                            <i class="fas fa-code"></i>
-                            <span>YARA DSL</span>
-                        </div>
-                        <div class="skill-item">
-                            <i class="fas fa-database"></i>
-                            <span>Data Processing</span>
-                        </div>
-                        <div class="skill-item">
-                            <i class="fas fa-file-code"></i>
-                            <span>Jupyter Notebooks</span>
-                        </div>
+                    <h3>Edge Extension — Model Deviation Summarizer</h3>
+                    <p>A local-first Edge browser extension with a FastAPI backend that analyzes AI conversations using
+                        vector alignment metrics and reconstructs optimized expert prompts to correct model deviation
+                        from user intent. Detects semantic drift across conversation turns and auto-generates corrective
+                        prompts.</p>
+                    <div class="proj-pipeline">
+                        <span>User Intent</span>
+                        <i class="fa-solid fa-arrow-right"></i>
+                        <span>Vector Alignment Engine</span>
+                        <i class="fa-solid fa-arrow-right"></i>
+                        <span>Drift Score</span>
+                        <i class="fa-solid fa-arrow-right"></i>
+                        <span>Corrective Prompt</span>
+                    </div>
+                    <div class="proj-tags">
+                        <span class="tag-chip">JavaScript</span>
+                        <span class="tag-chip">FastAPI</span>
+                        <span class="tag-chip">Vector Alignment</span>
+                        <span class="tag-chip">LLM Tooling</span>
                     </div>
                 </div>
-                <div class="skill-category">
-                    <h3>Security & Tools</h3>
-                    <div class="skill-items">
-                        <div class="skill-item">
-                            <i class="fas fa-shield-alt"></i>
-                            <span>Cybersecurity</span>
+
+                <!-- Featured Large Card 2 -->
+                <div class="proj-card proj-card-lg">
+                    <div class="proj-card-top">
+                        <span class="proj-badge">RL × Control</span>
+                        <div class="proj-links">
+                            <a href="https://github.com/sanjeev1508/TD3-Based-PI-Gain-Tuning" target="_blank"
+                                title="GitHub Repo"><i class="fa-brands fa-github"></i></a>
                         </div>
-                        <div class="skill-item">
-                            <i class="fas fa-eye"></i>
-                            <span>SOC Monitoring</span>
-                        </div>
-                        <div class="skill-item">
-                            <i class="fab fa-git-alt"></i>
-                            <span>Git</span>
-                        </div>
-                        <div class="skill-item">
-                            <i class="fas fa-lock"></i>
-                            <span>Prompt Security</span>
-                        </div>
+                    </div>
+                    <h3>TD3-Based PI Gain Tuning</h3>
+                    <p>Applied Twin Delayed Deep Deterministic Policy Gradient (TD3) to auto-tune PI controller gains on
+                        a 2nd-order hydraulic actuator, without exposing plant parameters to the agent. Achieved 35%
+                        reduction in overshoot and 37% improvement in ITAE.</p>
+                    <div class="proj-pipeline">
+                        <span>Gymnasium Env</span>
+                        <i class="fa-solid fa-arrow-right"></i>
+                        <span>TD3 Agent</span>
+                        <i class="fa-solid fa-arrow-right"></i>
+                        <span>[α, β] Correction</span>
+                        <i class="fa-solid fa-arrow-right"></i>
+                        <span>Kp/Ki Tuned</span>
+                    </div>
+                    <div class="proj-tags">
+                        <span class="tag-chip">Python</span>
+                        <span class="tag-chip">PyTorch</span>
+                        <span class="tag-chip">Stable-Baselines3</span>
+                        <span class="tag-chip">Gymnasium</span>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
 
-    <!-- Projects Section -->
-    <section id="projects" class="projects">
-        <div class="container">
-            <h2 class="section-title">Featured Projects</h2>
-            <div class="projects-grid">
-                <div class="project-card">
-                    <div class="project-image">
-                        <div class="project-placeholder">
-                            <i class="fas fa-shield-alt"></i>
-                        </div>
+            <!-- Grid of smaller projects -->
+            <div class="projects-grid reveal">
+                <div class="proj-card">
+                    <div class="proj-card-icon-area">
+                        <i class="fa-solid fa-shield-halved"></i>
                     </div>
-                    <div class="project-content">
+                    <div class="proj-card-body">
+                        <div class="proj-card-top">
+                            <span class="proj-badge">AI × Security</span>
+                            <div class="proj-links">
+                                <a href="https://github.com/sanjeev1508/AI-Driven-ZeroDay-SOC-Monitoring-Tool"
+                                    target="_blank" title="GitHub Repo"><i class="fa-brands fa-github"></i></a>
+                            </div>
+                        </div>
                         <h3>AI-Driven ZeroDay SOC Monitoring Tool</h3>
-                        <p>An AI-driven Security Operations Center (SOC) system designed with four modular agents for log monitoring, threat intelligence processing, and alert generation. The architecture supports scalable and efficient security monitoring.</p>
-                        <div class="project-tech">
-                            <span>Python</span>
-                            <span>AI/ML</span>
-                            <span>Cybersecurity</span>
+                        <p>4-agent modular SOC system: Log Collector → Threat Intel Scraper → Synthetic Attacker
+                            Generator → Alert Manager. Stores threat embeddings in Qdrant for real-time semantic alert
+                            matching and zero-day pattern detection.</p>
+                        <div class="proj-pipeline">
+                            <span>Log Collector</span>
+                            <i class="fa-solid fa-arrow-right"></i>
+                            <span>Threat Intel</span>
+                            <i class="fa-solid fa-arrow-right"></i>
+                            <span>Synthetic Attacker</span>
+                            <i class="fa-solid fa-arrow-right"></i>
+                            <span>Alert Manager</span>
                         </div>
-                        <div class="project-links">
-                            <a href="https://github.com/sanjeev1508/AI-Driven-ZeroDay-SOC-Monitoring-Tool" target="_blank" rel="noopener noreferrer" class="project-link"><i class="fab fa-github"></i> Code</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="project-card">
-                    <div class="project-image">
-                        <div class="project-placeholder">
-                            <i class="fas fa-lock"></i>
-                        </div>
-                    </div>
-                    <div class="project-content">
-                        <h3>PromptMasker</h3>
-                        <p>PromptMasker is a prompt-sanitization utility that heuristically detects and masks sensitive data in raw text before it is sent to LLMs, logs, or external services. Designed to sit before your LLM calls for enhanced security.</p>
-                        <div class="project-tech">
-                            <span>Python</span>
-                            <span>Security</span>
-                            <span>LLM</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://github.com/sanjeev1508/promptmasker" target="_blank" rel="noopener noreferrer" class="project-link"><i class="fab fa-github"></i> Code</a>
+                        <div class="proj-tags">
+                            <span class="tag-chip">Multi-Agent</span>
+                            <span class="tag-chip">Qdrant</span>
+                            <span class="tag-chip">FastAPI</span>
+                            <span class="tag-chip">Python</span>
+                            <span class="tag-chip">LLM</span>
                         </div>
                     </div>
                 </div>
-                <div class="project-card">
-                    <div class="project-image">
-                        <div class="project-placeholder">
-                            <i class="fas fa-smile"></i>
-                        </div>
-                    </div>
-                    <div class="project-content">
-                        <h3>Customer Sentiment Analysis</h3>
-                        <p>An AI-driven Amazon review analysis system that scrapes, processes, and classifies reviews using sentiment analysis, topic modeling, and emotion detection. Visualizes insights through comprehensive data analysis.</p>
-                        <div class="project-tech">
-                            <span>Python</span>
-                            <span>NLP</span>
-                            <span>Jupyter</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://github.com/sanjeev1508/Customer-Sentiment-Analysis" target="_blank" rel="noopener noreferrer" class="project-link"><i class="fab fa-github"></i> Code</a>
+            </div>
+
+
+            <div class="text-center reveal">
+                <a href="https://github.com/sanjeev1508" target="_blank" class="btn btn-outline">
+                    <i class="fa-brands fa-github"></i> See All 18 Repositories
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ====== SKILLS ====== -->
+    <section id="skills" class="section skills-section">
+        <div class="container">
+            <h2 class="section-title reveal">Technical <span class="gradient-text">Skills</span></h2>
+        </div>
+
+        <!-- Marquee Row 1 -->
+        <div class="marquee-wrap reveal">
+            <div class="marquee-track" id="marquee-1">
+                <div class="marquee-inner">
+                    <div class="logo-card"><img
+                            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg"
+                            alt="Python"><span>Python</span></div>
+                    <div class="logo-card"><img
+                            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pytorch/pytorch-original.svg"
+                            alt="PyTorch"><span>PyTorch</span></div>
+                    <div class="logo-card"><img
+                            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svg"
+                            alt="TensorFlow"><span>TensorFlow</span></div>
+                    <div class="logo-card"><img
+                            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/fastapi/fastapi-original.svg"
+                            alt="FastAPI"><span>FastAPI</span></div>
+                    <div class="logo-card"><img
+                            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"
+                            alt="JavaScript"><span>JavaScript</span></div>
+                    <div class="logo-card"><img
+                            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg"
+                            alt="Docker"><span>Docker</span></div>
+                    <div class="logo-card"><img
+                            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg"
+                            alt="Git"><span>Git</span></div>
+                    <div class="logo-card"><img
+                            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg"
+                            alt="PostgreSQL"><span>PostgreSQL</span></div>
+                    <div class="logo-card"><img
+                            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg"
+                            alt="MySQL"><span>MySQL</span></div>
+                    <div class="logo-card"><img
+                            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-plain-wordmark.svg"
+                            alt="AWS"><span>AWS</span></div>
+                    <div class="logo-card"><img
+                            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/apachekafka/apachekafka-original.svg"
+                            alt="Kafka"><span>Kafka</span></div>
+                    <div class="logo-card logo-card-icon"><i class="fa-solid fa-envelope-open-text"
+                            style="font-size:2rem;color:#FF6C37;"></i><span>Postman</span></div>
+                    <div class="logo-card logo-card-icon"><i class="fa-solid fa-plug"
+                            style="font-size:2rem;color:#5b21b6;"></i><span>MCP</span></div>
+                    <!-- Duplicate for seamless loop -->
+                    <div class="logo-card"><img
+                            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg"
+                            alt="Python"><span>Python</span></div>
+                    <div class="logo-card"><img
+                            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pytorch/pytorch-original.svg"
+                            alt="PyTorch"><span>PyTorch</span></div>
+                    <div class="logo-card"><img
+                            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svg"
+                            alt="TensorFlow"><span>TensorFlow</span></div>
+                    <div class="logo-card"><img
+                            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/fastapi/fastapi-original.svg"
+                            alt="FastAPI"><span>FastAPI</span></div>
+                    <div class="logo-card"><img
+                            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"
+                            alt="JavaScript"><span>JavaScript</span></div>
+                    <div class="logo-card"><img
+                            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg"
+                            alt="Docker"><span>Docker</span></div>
+                    <div class="logo-card"><img
+                            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg"
+                            alt="Git"><span>Git</span></div>
+                    <div class="logo-card"><img
+                            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg"
+                            alt="PostgreSQL"><span>PostgreSQL</span></div>
+                    <div class="logo-card"><img
+                            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg"
+                            alt="MySQL"><span>MySQL</span></div>
+                    <div class="logo-card"><img
+                            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-plain-wordmark.svg"
+                            alt="AWS"><span>AWS</span></div>
+                    <div class="logo-card"><img
+                            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/apachekafka/apachekafka-original.svg"
+                            alt="Kafka"><span>Kafka</span></div>
+                    <div class="logo-card logo-card-icon"><i class="fa-solid fa-envelope-open-text"
+                            style="font-size:2rem;color:#FF6C37;"></i><span>Postman</span></div>
+                    <div class="logo-card logo-card-icon"><i class="fa-solid fa-plug"
+                            style="font-size:2rem;color:#5b21b6;"></i><span>MCP</span></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Marquee Row 2 (reverse) -->
+        <div class="marquee-wrap">
+            <div class="marquee-track marquee-reverse" id="marquee-2">
+                <div class="marquee-inner">
+                    <div class="logo-card"><img
+                            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jupyter/jupyter-original.svg"
+                            alt="Jupyter"><span>Jupyter</span></div>
+                    <div class="logo-card"><img
+                            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pandas/pandas-original.svg"
+                            alt="Pandas"><span>Pandas</span></div>
+                    <div class="logo-card"><img
+                            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/numpy/numpy-original.svg"
+                            alt="NumPy"><span>NumPy</span></div>
+                    <div class="logo-card"><img
+                            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg"
+                            alt="Firebase"><span>Firebase</span></div>
+                    <div class="logo-card"><img
+                            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg"
+                            alt="Linux"><span>Linux</span></div>
+                    <div class="logo-card"><img
+                            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg"
+                            alt="VSCode"><span>VS Code</span></div>
+                    <div class="logo-card"><img
+                            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg"
+                            alt="GitHub"><span>GitHub</span></div>
+                    <div class="logo-card"><img
+                            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/openCV/opencv-original.svg"
+                            alt="OpenCV"><span>OpenCV</span></div>
+                    <div class="logo-card"><img src="https://huggingface.co/front/assets/huggingface_logo-noborder.svg"
+                            alt="HuggingFace"><span>HuggingFace</span></div>
+                    <div class="logo-card"><img
+                            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/streamlit/streamlit-original.svg"
+                            alt="Streamlit"
+                            onerror="this.src='https://docs.streamlit.io/logo.svg'"><span>Streamlit</span></div>
+                    <div class="logo-card logo-card-icon"><i class="fa-solid fa-database"
+                            style="font-size:2rem;color:#e05a00;"></i><span>Zookeeper</span></div>
+                    <div class="logo-card logo-card-icon"><i class="fa-solid fa-arrows-spin"
+                            style="font-size:2rem;color:#0ea5e9;"></i><span>Debezium</span></div>
+                    <!-- Duplicate -->
+                    <div class="logo-card"><img
+                            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jupyter/jupyter-original.svg"
+                            alt="Jupyter"><span>Jupyter</span></div>
+                    <div class="logo-card"><img
+                            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pandas/pandas-original.svg"
+                            alt="Pandas"><span>Pandas</span></div>
+                    <div class="logo-card"><img
+                            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/numpy/numpy-original.svg"
+                            alt="NumPy"><span>NumPy</span></div>
+                    <div class="logo-card"><img
+                            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg"
+                            alt="Firebase"><span>Firebase</span></div>
+                    <div class="logo-card"><img
+                            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg"
+                            alt="Linux"><span>Linux</span></div>
+                    <div class="logo-card"><img
+                            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg"
+                            alt="VSCode"><span>VS Code</span></div>
+                    <div class="logo-card"><img
+                            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg"
+                            alt="GitHub"><span>GitHub</span></div>
+                    <div class="logo-card"><img
+                            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/openCV/opencv-original.svg"
+                            alt="OpenCV"><span>OpenCV</span></div>
+                    <div class="logo-card"><img src="https://huggingface.co/front/assets/huggingface_logo-noborder.svg"
+                            alt="HuggingFace"><span>HuggingFace</span></div>
+                    <div class="logo-card"><img
+                            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/streamlit/streamlit-original.svg"
+                            alt="Streamlit"
+                            onerror="this.src='https://docs.streamlit.io/logo.svg'"><span>Streamlit</span></div>
+                    <div class="logo-card logo-card-icon"><i class="fa-solid fa-database"
+                            style="font-size:2rem;color:#e05a00;"></i><span>Zookeeper</span></div>
+                    <div class="logo-card logo-card-icon"><i class="fa-solid fa-arrows-spin"
+                            style="font-size:2rem;color:#0ea5e9;"></i><span>Debezium</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ====== EDUCATION ====== -->
+    <section id="education" class="section education-section">
+        <div class="container">
+            <div class="section-label">Academic Background</div>
+            <h2 class="section-title reveal">Education</h2>
+            <div class="edu-grid reveal">
+                <div class="edu-card edu-card-main">
+                    <div class="edu-icon-wrap"><i class="fa-solid fa-graduation-cap"></i></div>
+                    <div class="edu-info">
+                        <span class="edu-type">Pursuing</span>
+                        <h3>M.Sc. Artificial Intelligence and Machine Learning (Integrated)</h3>
+                        <p class="edu-institution"><a href="https://www.cit.edu.in/" target="_blank" rel="noopener"
+                                style="color:inherit;text-decoration:none;border-bottom:1.5px dotted currentColor;">Coimbatore
+                                Institute of Technology</a></p>
+                        <div class="edu-meta">
+                            <span><i class="fa-regular fa-calendar"></i> 2022 – Present</span>
+                            <span class="edu-cgpa"><i class="fa-solid fa-star"></i> CGPA: 8.63 (Till 7th
+                                Semester)</span>
                         </div>
                     </div>
                 </div>
-                <div class="project-card">
-                    <div class="project-image">
-                        <div class="project-placeholder">
-                            <i class="fas fa-robot"></i>
-                        </div>
-                    </div>
-                    <div class="project-content">
-                        <h3>Agentic RAG System</h3>
-                        <p>An advanced Retrieval-Augmented Generation system with multi-agent reasoning capabilities. Combines intelligent information retrieval with generative AI for enhanced question-answering and knowledge synthesis.</p>
-                        <div class="project-tech">
-                            <span>Python</span>
-                            <span>RAG</span>
-                            <span>AI Agents</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://github.com/sanjeev1508/agentic-rag-system" target="_blank" rel="noopener noreferrer" class="project-link"><i class="fab fa-github"></i> Code</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="project-card">
-                    <div class="project-image">
-                        <div class="project-placeholder">
-                            <i class="fas fa-envelope"></i>
-                        </div>
-                    </div>
-                    <div class="project-content">
-                        <h3>AI Personalized Mail Composer</h3>
-                        <p>A Streamlit-based AI assistant that generates personalized and professional emails by learning from your Gmail sent mail style. Securely logs in with Gmail App Password and creates emails matching your writing style.</p>
-                        <div class="project-tech">
-                            <span>Python</span>
-                            <span>Streamlit</span>
-                            <span>Gmail API</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://github.com/sanjeev1508/AI-Personalized-Mail-Composer" target="_blank" rel="noopener noreferrer" class="project-link"><i class="fab fa-github"></i> Code</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="project-card">
-                    <div class="project-image">
-                        <div class="project-placeholder">
-                            <i class="fas fa-code"></i>
-                        </div>
-                    </div>
-                    <div class="project-content">
-                        <h3>YARA DSL</h3>
-                        <p>A pure-Python domain-specific language for building guaranteed-valid YARA rules with semantic validation, cross-reference checking, and domain knowledge about PE/ELF files. Simplifies malware detection rule creation.</p>
-                        <div class="project-tech">
-                            <span>Python</span>
-                            <span>DSL</span>
-                            <span>Malware Detection</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://github.com/sanjeev1508/Yara-dsl" target="_blank" rel="noopener noreferrer" class="project-link"><i class="fab fa-github"></i> Code</a>
+                <div class="edu-card">
+                    <div class="edu-icon-wrap"><i class="fa-solid fa-school"></i></div>
+                    <div class="edu-info">
+                        <span class="edu-type">Completed</span>
+                        <h3>Higher Secondary Education (HSC)</h3>
+                        <p class="edu-institution"><a href="https://mahendra.org/schools/mmhss_ka.html" target="_blank"
+                                rel="noopener"
+                                style="color:inherit;text-decoration:none;border-bottom:1.5px dotted currentColor;">Mahendra
+                                Matric Hr Sec School, Namakkal</a></p>
+                        <div class="edu-meta">
+                            <span><i class="fa-regular fa-calendar"></i> 2021 – 2022</span>
+                            <span class="edu-cgpa"><i class="fa-solid fa-star"></i> 89.4%</span>
                         </div>
                     </div>
                 </div>
@@ -305,38 +630,94 @@
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="footer">
+    <!-- ====== ACHIEVEMENTS ====== -->
+    <section id="achievements" class="section achievements-section">
         <div class="container">
-            <p>&copy; 2024 Sanjeevikumar S. All rights reserved.</p>
-            <div class="footer-social">
-                <a href="https://www.linkedin.com/in/sanjeevikumar-s-737951282" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-                <a href="https://github.com/sanjeev1508" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="GitHub"><i class="fab fa-github"></i></a>
+            <h2 class="section-title reveal">Achievements</h2>
+            <div class="achievements-list reveal">
+                <div class="ach-item">
+                    <div class="ach-medal gold"><i class="fa-solid fa-medal"></i></div>
+                    <div class="ach-text">
+                        <h3><a href="https://www.linkedin.com/posts/sanjeevikumar-s-737951282_techstars-startupweekend-sustainability-activity-7142482068285865984-F1Vr?utm_source=share&utm_medium=member_desktop&rcm=ACoAAETW69sBcJHj5iMO27tws30WTqWk3NQYSoQ"
+                                target="_blank" rel="noopener"
+                                style="color:inherit;text-decoration:none;border-bottom:1.5px dotted currentColor;">1st
+                                Prize — TechStars Startup Weekend Sustainability</a></h3>
+                        <p>2024</p>
+                    </div>
+                </div>
+                <div class="ach-item">
+                    <div class="ach-medal gold"><i class="fa-solid fa-medal"></i></div>
+                    <div class="ach-text">
+                        <h3><a href="https://www.linkedin.com/posts/m-sc-artificial-intelligence-and-machine-learning-cit_mscaiml-studentachievement-proudmoment-ugcPost-7252703614400438272-xLOS?utm_source=share&utm_medium=member_desktop&rcm=ACoAAETW69sBcJHj5iMO27tws30WTqWk3NQYSoQ"
+                                target="_blank" rel="noopener"
+                                style="color:inherit;text-decoration:none;border-bottom:1.5px dotted currentColor;">1st
+                                Place — Impairathon 2024 by StartupTN</a></h3>
+                        <p>Competed against 360+ teams nationally</p>
+                    </div>
+                </div>
+                <div class="ach-item">
+                    <div class="ach-medal silver"><i class="fa-solid fa-award"></i></div>
+                    <div class="ach-text">
+                        <h3>Finalist — Shaastra Programming Contest 2025</h3>
+                        <p>IIT Madras</p>
+                    </div>
+                </div>
             </div>
+        </div>
+    </section>
+
+    <!-- ====== CONTACT ====== -->
+    <section id="contact" class="section contact-section">
+        <div class="container">
+            <div class="contact-wrap reveal">
+                <div class="section-label">Let's Talk</div>
+                <h2>Open to <span class="gradient-text">Collaborations</span> & Roles</h2>
+                <p>I'm actively looking for research collaborations and full-time/internship roles in AI × Security.
+                    Feel free to reach out!</p>
+                <div class="contact-links">
+                    <a href="mailto:sanjeevikumar15@gmail.com" class="btn btn-primary"><i
+                            class="fa-regular fa-envelope"></i> sanjeevikumar15@gmail.com</a>
+                    <a href="https://www.linkedin.com/in/sanjeevikumar-s-737951282/" target="_blank"
+                        class="btn btn-outline"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
+                    <a href="https://github.com/sanjeev1508" target="_blank" class="btn btn-outline"><i
+                            class="fa-brands fa-github"></i> GitHub</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ====== FOOTER ====== -->
+    <footer class="footer">
+        <div class="container footer-inner">
+            <p>Designed & built by <strong>Sanjeevikumar S</strong> &nbsp;·&nbsp; 2026</p>
+            <p class="mono">Building AI systems that are hard to fool, hard to drift, and easy to trust.</p>
         </div>
     </footer>
 
-    <!-- Chatbot UI -->
-    <div class="chatbot-container" id="chatbot">
-        <div class="chat-header">
-            <span>AI Assistant</span>
-            <button id="close-chat"><i class="fas fa-times"></i></button>
+    <!-- ====== XAN CHATBOX MODAL ====== -->
+    <div id="xan-chat-modal" class="xan-chat-modal">
+        <div class="xan-chat-header">
+            <div class="xan-header-left">
+                <div class="xan-header-icon"><i class="fa-solid fa-microchip"></i></div>
+                <div>
+                    <h4>Xan</h4>
+                </div>
+            </div>
+            <button id="xan-close-btn" class="xan-close-btn"><i class="fa-solid fa-xmark"></i></button>
         </div>
-        <div class="chat-messages" id="chat-messages">
-            <div class="message bot">
-                Hi! I'm Sanjeevikumar's AI assistant. How can I help you today?
+        <div id="xan-chat-messages" class="xan-chat-messages">
+            <div class="xan-message xan-ai">
+                Hey! I'm <strong>Xan</strong> — ask me anything about Sanjeev’s work.
             </div>
         </div>
-        <div class="chat-input-container">
-            <input type="text" id="chat-input" placeholder="Type your message...">
-            <button id="send-btn"><i class="fas fa-paper-plane"></i></button>
+        <div class="xan-chat-input-area">
+            <input type="text" id="xan-chat-input" placeholder="Ask about his experience or skills..."
+                autocomplete="off">
+            <button id="xan-send-btn" class="xan-send-btn"><i class="fa-solid fa-paper-plane"></i></button>
         </div>
     </div>
-    <button class="chat-toggle" id="chat-toggle">
-        <i class="fas fa-comment-dots"></i>
-    </button>
 
     <script src="script.js"></script>
 </body>
-</html>
 
+</html>

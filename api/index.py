@@ -1,5 +1,6 @@
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
+from typing import List, Dict, Any
 import requests
 import os
 
@@ -10,23 +11,21 @@ OPENROUTER_API_KEY = "sk-or-v1-0537ba72cb4838833e5adf73b6365523766087597a04ae7ad
 OPENROUTER_URL = "https://openrouter.ai/api/v1/chat/completions"
 
 class ChatRequest(BaseModel):
-    message: str
+    messages: List[Dict[str, Any]]
 
 @app.post("/api/chat")
 async def chat_endpoint(req: ChatRequest):
     headers = {
         "Authorization": f"Bearer {OPENROUTER_API_KEY}",
         "Content-Type": "application/json",
-        "HTTP-Referer": "https://sanjeev-portfolio.vercel.app", 
+        "HTTP-Referer": "https://sanjeev1508.vercel.app", 
         "X-Title": "Portfolio Chatbot"
     }
 
     data = {
+        # Using a reliable free model from OpenRouter as previously planned
         "model": "mistralai/mistral-7b-instruct:free",
-        "messages": [
-            {"role": "system", "content": "You are a helpful AI assistant on Sanjeevikumar's portfolio website. Sanjeev is an AI & ML Engineer. Answer concisely and politely."},
-            {"role": "user", "content": req.message}
-        ]
+        "messages": req.messages
     }
 
     try:
