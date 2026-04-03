@@ -1,0 +1,126 @@
+.skills {
+    padding: 80px 0;
+    background: radial-gradient(circle at top, #0b1120 0%, #020617 55%, #000000 100%);
+    color: #e5e7eb;
+}
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 2rem;
+}
+
+.skill-category {
+    background: radial-gradient(circle at top left, rgba(148, 163, 184, 0.18), transparent 55%),
+        rgba(15, 23, 42, 0.96);
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 18px 45px rgba(15, 23, 42, 0.9);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.skill-category:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 25px 60px rgba(15, 23, 42, 0.95);
+}
+
+.skill-category::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 6px;
+    height: 100%;
+    border-radius: 15px 0 0 15px;
+    background: linear-gradient(180deg, var(--primary-color), var(--secondary-color));
+}
+
+.skill-category-header {
+    margin-bottom: 1.5rem;
+}
+
+.skill-category h3 {
+    font-size: 1.5rem;
+    color: var(--text-dark);
+    color: #f9fafb;
+}
+
+.skill-category-subtitle {
+    margin-top: 0.35rem;
+    font-size: 0.9rem;
+    color: #94a3b8;
+}
+
+.skill-items {
+    list-style: none;
+    margin: 0;
+    margin-top: 1rem;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+}
+
+.skill-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.35rem 0.25rem;
+    font-weight: 500;
+    transition: all 0.25s ease;
+    cursor: default;
+}
+
+.skill-item:hover {
+    color: var(--secondary-color);
+    transform: translateX(4px);
+}
+
+.skill-bullet {
+    width: 10px;
+    height: 10px;
+    border-radius: 999px;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+}
+
+.skill-text {
+    color: #e5e7eb;
+}
+
+/* Category accent colors (inspired by template) */
+.category-programming::before {
+    background: linear-gradient(180deg, #0ea5e9, #22c55e);
+}
+
+.category-database::before {
+    background: linear-gradient(180deg, #6366f1, #8b5cf6);
+}
+
+.category-ai::before {
+    background: linear-gradient(180deg, #ec4899, #f97316);
+}
+
+.category-data::before {
+    background: linear-gradient(180deg, #22c55e, #16a34a);
+}
+
+.category-cloud::before {
+    background: linear-gradient(180deg, #06b6d4, #0ea5e9);
+}
+
+@media (max-width: 768px) {
+    .skills-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Keep all skill categories in ONE ROW on desktop */
+@media (min-width: 1280px) {
+    .skills-grid {
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+        align-items: stretch;
+    }
+}
+
