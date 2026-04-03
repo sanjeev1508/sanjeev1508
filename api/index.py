@@ -6,8 +6,8 @@ import os
 
 app = FastAPI()
 
-# OpenRouter API Key provided by the user
-OPENROUTER_API_KEY = "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"
+# OpenRouter API Key securely fetched from environment
+OPENROUTER_API_KEY = os.getenv("OPENROUTER_API_KEY")
 OPENROUTER_URL = "https://openrouter.ai/api/v1/chat/completions"
 
 class ChatRequest(BaseModel):
@@ -15,16 +15,18 @@ class ChatRequest(BaseModel):
 
 @app.post("/api/chat")
 async def chat_endpoint(req: ChatRequest):
+    if not OPENROUTER_API_KEY:
+        raise HTTPException(status_code=500, detail="OPENROUTER_API_KEY environment variable is missing")
+
     headers = {
         "Authorization": f"Bearer {OPENROUTER_API_KEY}",
         "Content-Type": "application/json",
-        "HTTP-Referer": "https://sanjeev1508.vercel.app", 
-        "X-Title": "Portfolio Chatbot"
+        "HTTP-Referer": "https://sanjeev1508.vercel.app",
+        "X-Title": "portfolio-app"
     }
 
     data = {
-        # Using a reliable free model from OpenRouter as previously planned
-        "model": "mistralai/mistral-7b-instruct:free",
+        "model": "nvidia/nemotron-3-super-120b-a12b-20230311:free",
         "messages": req.messages
     }
 
