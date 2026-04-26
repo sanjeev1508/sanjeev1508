@@ -1,8 +1,6 @@
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.staticfiles import StaticFiles
 from fastapi.responses import FileResponse
-from typing import List, Dict, Any
 import requests
 import os
 
@@ -22,6 +20,19 @@ async def serve_css():
 @app.get("/script.js")
 async def serve_js():
     return FileResponse(os.path.join(_base_dir, "script.js"), media_type="application/javascript")
+
+
+@app.get("/my_picture.JPG")
+async def serve_image():
+    return FileResponse(os.path.join(_base_dir, "my_picture.JPG"), media_type="image/jpeg")
+
+@app.get("/Sanjeevikumar_S_Resume.pdf")
+async def serve_resume():
+    return FileResponse(
+        os.path.join(_base_dir, "Sanjeevikumar_S_Resume.pdf"),
+        media_type="application/pdf",
+        headers={"Content-Disposition": "inline; filename=Sanjeevikumar_S_Resume.pdf"}
+    )
 
 app.add_middleware(
     CORSMiddleware,
