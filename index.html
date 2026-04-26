@@ -12,19 +12,42 @@
         href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Outfit:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
+    <script>
+        window.addEventListener('error', function (e) {
+            let div = document.getElementById('debug-errors');
+            if (!div) {
+                div = document.createElement('div');
+                div.id = 'debug-errors';
+                div.style.cssText = 'position:fixed; top:0; left:0; z-index:999999; background:red; color:white; padding:10px; font-size:16px; font-weight:bold; width:100%; word-wrap:break-word;';
+                document.body.appendChild(div);
+            }
+            div.innerHTML += e.message + ' at ' + e.filename + ':' + e.lineno + '<br>';
+        });
+    </script>
+
+    <link rel="stylesheet" href="styles.css?v=7">
+
+
+    <!-- External Libs -->
+    <script src="https://cdn.jsdelivr.net/npm/tsparticles@2/tsparticles.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/countup.js@2.6.2/dist/countUp.umd.min.js"></script>
 </head>
 
 <body>
 
-    <!-- ====== NAVBAR ====== -->
+    <!-- Global UI Elements -->
+    <div class="cursor-dot" id="cursor-dot"></div>
+    <div class="cursor-ring" id="cursor-ring"></div>
+    <div class="noise-overlay"></div>
+
     <nav class="navbar" id="navbar">
         <div class="nav-inner">
             <a class="nav-brand" href="#hero">
                 <img src="https://avatars.githubusercontent.com/u/148964317?v=4" alt="Avatar" class="nav-avatar">
                 <span>Sanjeevikumar S</span>
             </a>
-            <ul class="nav-links">
+            <ul class="nav-links" id="nav-links">
                 <li><a href="#about">About</a></li>
                 <li><a href="#experience">Experience</a></li>
                 <li><a href="#projects">Projects</a></li>
@@ -32,6 +55,7 @@
                 <li><a href="#education">Education</a></li>
                 <li><a href="#contact" class="nav-cta">Contact</a></li>
             </ul>
+            <div class="nav-active-tracker" id="nav-tracker"></div>
             <button class="nav-hamburger" id="hamburger" aria-label="Toggle menu">
                 <i class="fa-solid fa-bars"></i>
             </button>
@@ -40,13 +64,14 @@
 
     <!-- ====== HERO ====== -->
     <section id="hero" class="hero">
+        <div id="tsparticles"></div>
         <div class="hero-blob blob-1"></div>
         <div class="hero-blob blob-2"></div>
         <div class="dot-grid"></div>
         <div class="hero-inner">
             <div class="hero-text reveal">
                 <h1>Hi, I'm <span class="gradient-text">Sanjeevikumar S</span></h1>
-                <p class="hero-role">AI Nerd</p>
+                <p class="hero-role"><span id="typed-text"></span><span class="typed-cursor">|</span></p>
                 <p class="hero-bio">
                     Persistent AI and Data Science professional applying solutions to CyberSecurity data challenges —
                     building systems that are hard to fool, hard to drift, and easy to trust.
@@ -85,237 +110,59 @@
                     <div class="section-label">Who I Am</div>
                     <h2>Building AI That <span class="gradient-text">Earns Trust</span></h2>
                     <p>
-                        Final-year M.Sc. AI &amp; ML student (CGPA: 8.63) building LLM-aligned, agentic, and
-                        security-focused AI systems — with hands-on internship experience and national hackathon wins.
+                        I am an AI &amp; Machine Learning engineer specialized in constructing LLM-aligned, agentic, and
+                        security-focused AI systems. My focus lies at the intersection of advanced deep learning and
+                        cybersecurity, building robust intelligence architectures that are resilient against drift and
+                        adversarial threats.
                     </p>
-                    <div class="about-contacts">
-                        <a href="mailto:sanjeevikumar15@gmail.com"><i class="fa-regular fa-envelope"></i>
-                            sanjeevikumar15@gmail.com</a>
-                        <span><i class="fa-solid fa-location-dot"></i> Coimbatore, Tamil Nadu</span>
-                    </div>
                 </div>
                 <div class="about-right">
                     <div class="about-stats-grid">
-                        <div class="about-stat-card">
+                        <div class="about-stat-card tilt-3d">
                             <i class="fa-solid fa-code-branch icon-accent"></i>
-                            <span class="stat-num">18</span>
+                            <span class="stat-num" data-count="18">0</span>
                             <span class="stat-lbl">GitHub Repos</span>
                         </div>
-                        <div class="about-stat-card">
+                        <div class="about-stat-card tilt-3d">
                             <i class="fa-solid fa-trophy icon-gold"></i>
-                            <span class="stat-num">3</span>
+                            <span class="stat-num" data-count="3">0</span>
                             <span class="stat-lbl">National Wins</span>
                         </div>
-                        <div class="about-stat-card">
+                        <div class="about-stat-card tilt-3d">
                             <i class="fa-solid fa-shield-halved icon-blue"></i>
-                            <span class="stat-num">4+</span>
+                            <span class="stat-num" data-count="4" data-suffix="+">0</span>
                             <span class="stat-lbl">AI Security Projects</span>
                         </div>
-                        <div class="about-stat-card">
-                            <i class="fa-solid fa-graduation-cap icon-purple"></i>
-                            <span class="stat-num">8.63</span>
-                            <span class="stat-lbl">CGPA (Sem 7)</span>
+                        <div class="about-stat-card tilt-3d">
+                            <i class="fa-solid fa-laptop-code icon-purple"></i>
+                            <span class="stat-num" data-count="6" data-suffix="+">0</span>
+                            <span class="stat-lbl">Months Experience</span>
                         </div>
                     </div>
-                    <!-- whoami snippet -->
                     <div class="code-block">
-                        <pre><code><span class="code-var">sanjeev</span> <span class="code-op">=</span> {
-  <span class="code-key">"role"</span>: <span class="code-str">"AI/ML Engineer"</span>,
-  <span class="code-key">"focus"</span>: [
-             <span class="code-str">"Intelligent Systems"</span>, 
-             <span class="code-str">"Machine Learning"</span>,
-             <span class="code-str">"Applied AI"</span>, 
-             <span class="code-str">"Scalable Solutions"</span>
-           ],
-  <span class="code-key">"strengths"</span>: [
-             <span class="code-str">"End-to-End Development"</span>,
-             <span class="code-str">"Problem Solving"</span>,
-             <span class="code-str">"Automation"</span>,
-             <span class="code-str">"System Design"</span>
-           ],
-  <span class="code-key">"currently"</span>: <span class="code-str">"Building impactful AI systems for real-world applications"</span>
-}</code></pre>
-                    </div>
-                </div>
-            </div>
-
-            <!-- ====== XAN COMPANION (SCORPION) ====== -->
-            <div id="xan-companion" class="xan-companion" aria-label="Chat with Xan AI">
-                <div class="xan-scorpio-wrap">
-                    <div id="xan-scorpio-anim-container">
-                        <svg id="xan-scorpio-svg" viewBox="-80 -100 160 220" width="90" height="120">
-                            <defs>
-                                <filter id="neonGlow" x="-50%" y="-50%" width="200%" height="200%">
-                                    <feGaussianBlur in="SourceGraphic" stdDeviation="3" result="blur1" />
-                                    <feGaussianBlur in="SourceGraphic" stdDeviation="8" result="blur2" />
-                                    <feMerge>
-                                        <feMergeNode in="blur2" />
-                                        <feMergeNode in="blur1" />
-                                        <feMergeNode in="SourceGraphic" />
-                                    </feMerge>
-                                </filter>
-                                <linearGradient id="scorpGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                                    <stop offset="0%" stop-color="#38bdf8" />
-                                    <stop offset="50%" stop-color="#7c3aed" />
-                                    <stop offset="100%" stop-color="#ec4899" />
-                                </linearGradient>
-                            </defs>
-
-                            <!-- Rotatable Wrapper -->
-                            <g id="scorp-rotator" filter="url(#neonGlow)" stroke="url(#scorpGrad)" stroke-width="2.5"
-                                fill="rgba(13,17,32,0.8)" stroke-linecap="round" stroke-linejoin="round">
-
-                                <!-- Left Legs -->
-                                <g transform="translate(-15, -10)">
-                                    <g class="sc-leg l1">
-                                        <path d="M0,0 L-25,-20 L-40,-5" fill="none" />
-                                    </g>
-                                </g>
-                                <g transform="translate(-16,   2)">
-                                    <g class="sc-leg l2">
-                                        <path d="M0,0 L-30,-5 L-45,15" fill="none" />
-                                    </g>
-                                </g>
-                                <g transform="translate(-15,  14)">
-                                    <g class="sc-leg l3">
-                                        <path d="M0,0 L-28,10 L-40,30" fill="none" />
-                                    </g>
-                                </g>
-                                <g transform="translate(-12,  26)">
-                                    <g class="sc-leg l4">
-                                        <path d="M0,0 L-20,20 L-30,45" fill="none" />
-                                    </g>
-                                </g>
-
-                                <!-- Right Legs -->
-                                <g transform="translate(15, -10)">
-                                    <g class="sc-leg r1">
-                                        <path d="M0,0 L25,-20 L40,-5" fill="none" />
-                                    </g>
-                                </g>
-                                <g transform="translate(16,   2)">
-                                    <g class="sc-leg r2">
-                                        <path d="M0,0 L30,-5 L45,15" fill="none" />
-                                    </g>
-                                </g>
-                                <g transform="translate(15,  14)">
-                                    <g class="sc-leg r3">
-                                        <path d="M0,0 L28,10 L40,30" fill="none" />
-                                    </g>
-                                </g>
-                                <g transform="translate(12,  26)">
-                                    <g class="sc-leg r4">
-                                        <path d="M0,0 L20,20 L30,45" fill="none" />
-                                    </g>
-                                </g>
-
-                                <!-- Left Arm & Pincer -->
-                                <g class="sc-arm left" transform="translate(-12, -25)">
-                                    <path d="M0,0 L-20,-25 L-10,-45" fill="none" />
-                                    <!-- Inside claw articulated -->
-                                    <g transform="translate(-10, -45)">
-                                        <g class="sc-pincer-inner">
-                                            <path d="M0,0 C-5,-10 5,-25 15,-20 C10,-15 5,-5 0,0"
-                                                fill="rgba(56,189,248,0.3)" />
-                                        </g>
-                                        <g class="sc-pincer-outer">
-                                            <path d="M0,0 C-15,-10 -20,-25 -10,-35 C-5,-25 -5,-10 0,0"
-                                                fill="rgba(124,58,237,0.3)" />
-                                        </g>
-                                    </g>
-                                </g>
-
-                                <!-- Right Arm & Pincer -->
-                                <g class="sc-arm right" transform="translate(12, -25)">
-                                    <path d="M0,0 L20,-25 L10,-45" fill="none" />
-                                    <g transform="translate(10, -45)">
-                                        <g class="sc-pincer-inner">
-                                            <path d="M0,0 C5,-10 -5,-25 -15,-20 C-10,-15 -5,-5 0,0"
-                                                fill="rgba(56,189,248,0.3)" />
-                                        </g>
-                                        <g class="sc-pincer-outer">
-                                            <path d="M0,0 C15,-10 20,-25 10,-35 C5,-25 5,-10 0,0"
-                                                fill="rgba(124,58,237,0.3)" />
-                                        </g>
-                                    </g>
-                                </g>
-
-                                <!-- Tail -->
-                                <g transform="translate(0, 30)">
-                                    <g class="sc-tail">
-                                        <path d="M0,0 Q10,15 0,35 Q-10,55 0,80" fill="none" stroke-width="4" />
-                                        <path d="M-6,80 L6,80 L0,105 Z" fill="rgba(56,189,248,0.5)" />
-                                    </g>
-                                </g>
-
-                                <!-- Body -->
-                                <path d="M-12,-25 Q0,-35 12,-25 L16,15 Q0,40 -16,15 Z" />
-
-                                <!-- Core/Heart -->
-                                <path d="M-6,-15 L6,-15 L10,5 L0,20 L-10,5 Z" fill="rgba(124,58,237,0.4)"
-                                    stroke-width="1.5" />
-
-                                <!-- Cyber Eyes -->
-                                <circle cx="-5" cy="-22" r="2.5" fill="#38bdf8" stroke="none" />
-                                <circle cx="5" cy="-22" r="2.5" fill="#38bdf8" stroke="none" />
-                            </g>
-                        </svg>
-                    </div>
-                    <span class="xan-tooltip">Ask <strong>Xan</strong></span>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ====== EXPERIENCE ====== -->
-    <section id="experience" class="section experience-section">
-        <div class="container">
-            <h2 class="section-title reveal">Work <span class="gradient-text">Experience</span></h2>
-            <div class="timeline reveal">
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-card">
-                        <div class="tc-header">
-                            <div>
-                                <h3>AI and CyberSecurity Intern</h3>
-                                <h4><a href="https://sq1.security/" target="_blank" rel="noopener"
-                                        style="color:inherit;text-decoration:none;border-bottom:1.5px dotted currentColor;">SQ1
-                                        Security Private Limited</a></h4>
-                            </div>
-                            <span class="tc-date"><i class="fa-regular fa-calendar"></i> Jun 2025 – Nov 2025</span>
-                        </div>
-                        <p class="tc-summary">Worked across AI, NLP, RAG, and Security pipelines — applying LLMs to
-                            real-world CyberSecurity and compliance challenges.</p>
-                        <div class="domain-bubbles">
-                            <span class="domain-bubble"><i class="fa-solid fa-shield-halved"></i> Vulnerability
-                                Detection</span>
-                            <span class="domain-bubble"><i class="fa-solid fa-file-shield"></i> Policy
-                                Classification</span>
-                            <span class="domain-bubble"><i class="fa-solid fa-magnifying-glass"></i> Semantic
-                                Retrieval</span>
-                            <span class="domain-bubble"><i class="fa-solid fa-file-medical"></i> Biomedical NER</span>
-                            <span class="domain-bubble"><i class="fa-solid fa-diagram-project"></i> RAG Pipelines</span>
-                            <span class="domain-bubble"><i class="fa-solid fa-robot"></i> Agentic Workflows</span>
-                            <span class="domain-bubble"><i class="fa-solid fa-server"></i> MCP Integration</span>
-                            <span class="domain-bubble"><i class="fa-solid fa-code"></i> CVE Analysis</span>
-                            <span class="domain-bubble"><i class="fa-solid fa-layer-group"></i> LLM Orchestration</span>
-                            <span class="domain-bubble"><i class="fa-solid fa-memo-circle-check"></i> ICD Code
-                                Mapping</span>
-                        </div>
+                        <pre><code id="json-typewriter"></code><span class="typed-cursor">|</span></pre>
                     </div>
                 </div>
             </div>
         </div>
     </section>
+
 
     <!-- ====== PROJECTS ====== -->
     <section id="projects" class="section projects-section">
         <div class="container">
             <h2 class="section-title reveal">Featured <span class="gradient-text">Projects</span></h2>
 
+            <div class="project-filters reveal">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="llm">LLM Alignment</button>
+                <button class="filter-btn" data-filter="rl">RL Control</button>
+                <button class="filter-btn" data-filter="sec">AI × Security</button>
+            </div>
+
             <div class="projects-featured reveal">
                 <!-- Featured Large Card -->
-                <div class="proj-card proj-card-lg">
+                <div class="proj-card proj-card-lg tilt-3d" data-category="llm">
                     <div class="proj-card-top">
                         <span class="proj-badge">LLM Alignment</span>
                         <div class="proj-links">
@@ -343,10 +190,17 @@
                         <span class="tag-chip">Vector Alignment</span>
                         <span class="tag-chip">LLM Tooling</span>
                     </div>
+                    <div class="proj-action-btns" style="margin-top: 20px; display: flex; gap: 12px;">
+                        <a href="https://github.com/sanjeev1508/Model-Deviation-Summarizer" target="_blank"
+                            class="btn btn-outline" style="padding: 8px 16px; font-size: 0.85rem;"><i
+                                class="fa-solid fa-code"></i> Code</a>
+                        <a href="#" class="btn btn-primary" style="padding: 8px 16px; font-size: 0.85rem;"><i
+                                class="fa-solid fa-rocket"></i> Live Demo</a>
+                    </div>
                 </div>
 
                 <!-- Featured Large Card 2 -->
-                <div class="proj-card proj-card-lg">
+                <div class="proj-card proj-card-lg tilt-3d" data-category="rl">
                     <div class="proj-card-top">
                         <span class="proj-badge">RL × Control</span>
                         <div class="proj-links">
@@ -373,12 +227,19 @@
                         <span class="tag-chip">Stable-Baselines3</span>
                         <span class="tag-chip">Gymnasium</span>
                     </div>
+                    <div class="proj-action-btns" style="margin-top: 20px; display: flex; gap: 12px;">
+                        <a href="https://github.com/sanjeev1508/TD3-Based-PI-Gain-Tuning" target="_blank"
+                            class="btn btn-outline" style="padding: 8px 16px; font-size: 0.85rem;"><i
+                                class="fa-solid fa-code"></i> Code</a>
+                        <a href="#" class="btn btn-primary" style="padding: 8px 16px; font-size: 0.85rem;"><i
+                                class="fa-solid fa-rocket"></i> Live Demo</a>
+                    </div>
                 </div>
             </div>
 
             <!-- Grid of smaller projects -->
             <div class="projects-grid reveal">
-                <div class="proj-card">
+                <div class="proj-card tilt-3d" data-category="sec">
                     <div class="proj-card-icon-area">
                         <i class="fa-solid fa-shield-halved"></i>
                     </div>
@@ -410,6 +271,13 @@
                             <span class="tag-chip">Python</span>
                             <span class="tag-chip">LLM</span>
                         </div>
+                        <div class="proj-action-btns" style="margin-top: 20px; display: flex; gap: 12px;">
+                            <a href="https://github.com/sanjeev1508/AI-Driven-ZeroDay-SOC-Monitoring-Tool"
+                                target="_blank" class="btn btn-outline"
+                                style="padding: 8px 16px; font-size: 0.85rem;"><i class="fa-solid fa-code"></i> Code</a>
+                            <a href="#" class="btn btn-primary" style="padding: 8px 16px; font-size: 0.85rem;"><i
+                                    class="fa-solid fa-rocket"></i> Live Demo</a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -426,165 +294,144 @@
     <!-- ====== SKILLS ====== -->
     <section id="skills" class="section skills-section">
         <div class="container">
-            <h2 class="section-title reveal">Technical <span class="gradient-text">Skills</span></h2>
-        </div>
+            <h2 class="section-title reveal">Core <span class="gradient-text">Proficiencies</span></h2>
 
-        <!-- Marquee Row 1 -->
-        <div class="marquee-wrap reveal">
-            <div class="marquee-track" id="marquee-1">
-                <div class="marquee-inner">
-                    <div class="logo-card"><img
-                            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg"
-                            alt="Python"><span>Python</span></div>
-                    <div class="logo-card"><img
-                            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pytorch/pytorch-original.svg"
-                            alt="PyTorch"><span>PyTorch</span></div>
-                    <div class="logo-card"><img
-                            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svg"
-                            alt="TensorFlow"><span>TensorFlow</span></div>
-                    <div class="logo-card"><img
-                            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/fastapi/fastapi-original.svg"
-                            alt="FastAPI"><span>FastAPI</span></div>
-                    <div class="logo-card"><img
-                            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"
-                            alt="JavaScript"><span>JavaScript</span></div>
-                    <div class="logo-card"><img
-                            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg"
-                            alt="Docker"><span>Docker</span></div>
-                    <div class="logo-card"><img
-                            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg"
-                            alt="Git"><span>Git</span></div>
-                    <div class="logo-card"><img
-                            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg"
-                            alt="PostgreSQL"><span>PostgreSQL</span></div>
-                    <div class="logo-card"><img
-                            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg"
-                            alt="MySQL"><span>MySQL</span></div>
-                    <div class="logo-card"><img
-                            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-plain-wordmark.svg"
-                            alt="AWS"><span>AWS</span></div>
-                    <div class="logo-card"><img
-                            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/apachekafka/apachekafka-original.svg"
-                            alt="Kafka"><span>Kafka</span></div>
-                    <div class="logo-card logo-card-icon"><i class="fa-solid fa-envelope-open-text"
-                            style="font-size:2rem;color:#FF6C37;"></i><span>Postman</span></div>
-                    <div class="logo-card logo-card-icon"><i class="fa-solid fa-plug"
-                            style="font-size:2rem;color:#5b21b6;"></i><span>MCP</span></div>
-                    <!-- Duplicate for seamless loop -->
-                    <div class="logo-card"><img
-                            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg"
-                            alt="Python"><span>Python</span></div>
-                    <div class="logo-card"><img
-                            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pytorch/pytorch-original.svg"
-                            alt="PyTorch"><span>PyTorch</span></div>
-                    <div class="logo-card"><img
-                            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svg"
-                            alt="TensorFlow"><span>TensorFlow</span></div>
-                    <div class="logo-card"><img
-                            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/fastapi/fastapi-original.svg"
-                            alt="FastAPI"><span>FastAPI</span></div>
-                    <div class="logo-card"><img
-                            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"
-                            alt="JavaScript"><span>JavaScript</span></div>
-                    <div class="logo-card"><img
-                            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg"
-                            alt="Docker"><span>Docker</span></div>
-                    <div class="logo-card"><img
-                            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg"
-                            alt="Git"><span>Git</span></div>
-                    <div class="logo-card"><img
-                            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg"
-                            alt="PostgreSQL"><span>PostgreSQL</span></div>
-                    <div class="logo-card"><img
-                            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg"
-                            alt="MySQL"><span>MySQL</span></div>
-                    <div class="logo-card"><img
-                            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-plain-wordmark.svg"
-                            alt="AWS"><span>AWS</span></div>
-                    <div class="logo-card"><img
-                            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/apachekafka/apachekafka-original.svg"
-                            alt="Kafka"><span>Kafka</span></div>
-                    <div class="logo-card logo-card-icon"><i class="fa-solid fa-envelope-open-text"
-                            style="font-size:2rem;color:#FF6C37;"></i><span>Postman</span></div>
-                    <div class="logo-card logo-card-icon"><i class="fa-solid fa-plug"
-                            style="font-size:2rem;color:#5b21b6;"></i><span>MCP</span></div>
+            <div class="skills-matrix reveal">
+                <!-- AI Technologies -->
+                <div class="skill-row">
+                    <div class="skill-row-header">
+                        <div class="skill-icon"><i class="fa-solid fa-microchip"></i></div>
+                        <h3>AI Technologies</h3>
+                    </div>
+                    <div class="skill-row-content">
+                        <div class="skill-icon-item" data-tooltip="Model Finetuning"><i class="fa-solid fa-sliders"
+                                style="color: #6366f1;"></i></div>
+                        <div class="skill-icon-item" data-tooltip="NLP"><i class="fa-solid fa-language"
+                                style="color: #0ea5e9;"></i></div>
+                        <div class="skill-icon-item" data-tooltip="RAG"><i class="fa-solid fa-network-wired"
+                                style="color: #a855f7;"></i></div>
+                        <div class="skill-icon-item" data-tooltip="MCP"><i class="fa-solid fa-puzzle-piece"
+                                style="color: #10b981;"></i></div>
+                        <div class="skill-icon-item" data-tooltip="Agentic-AI"><i class="fa-solid fa-robot"
+                                style="color: #f59e0b;"></i></div>
+                        <div class="skill-icon-item" data-tooltip="A2A Protocol"><i class="fa-solid fa-right-left"
+                                style="color: #ef4444;"></i></div>
+                    </div>
+                </div>
+
+                <!-- Big Data & Analytics Tools -->
+                <div class="skill-row">
+                    <div class="skill-row-header">
+                        <div class="skill-icon data-icon"><i class="fa-solid fa-chart-line"></i></div>
+                        <h3>Big Data &amp; Analytics Tools</h3>
+                    </div>
+                    <div class="skill-row-content">
+                        <div class="skill-icon-item" data-tooltip="Debezium"><img
+                                src="https://debezium.io/assets/images/color_white_debezium_type_600px.png"
+                                style="width:28px; height:auto; filter: brightness(0) invert(1);" alt="Debezium"></div>
+                        <div class="skill-icon-item" data-tooltip="Kafka"><i
+                                class="devicon-apachekafka-original colored"></i></div>
+                        <div class="skill-icon-item" data-tooltip="ZooKeeper"><i class="fa-solid fa-sitemap"
+                                style="color: #fcd34d;"></i></div>
+                        <div class="skill-icon-item" data-tooltip="PowerBI"><img
+                                src="https://upload.wikimedia.org/wikipedia/commons/c/c9/Power_bi_logo_black.svg"
+                                style="width:28px; height:auto; filter: brightness(0) invert(1);" alt="PowerBI"></div>
+                    </div>
+                </div>
+
+                <!-- Cloud, Containerization & Version Control -->
+                <div class="skill-row">
+                    <div class="skill-row-header">
+                        <div class="skill-icon tools-icon"><i class="fa-solid fa-cloud"></i></div>
+                        <h3>Cloud, Containerization &amp; Version Control</h3>
+                    </div>
+                    <div class="skill-row-content">
+                        <div class="skill-icon-item" data-tooltip="Docker"><i class="devicon-docker-plain colored"></i>
+                        </div>
+                        <div class="skill-icon-item" data-tooltip="AWS"><i
+                                class="devicon-amazonwebservices-original colored"></i></div>
+                        <div class="skill-icon-item" data-tooltip="Git"><i class="devicon-git-plain colored"></i></div>
+                    </div>
+                </div>
+
+                <!-- Programming Languages -->
+                <div class="skill-row">
+                    <div class="skill-row-header">
+                        <div class="skill-icon sec-icon"><i class="fa-solid fa-code"></i></div>
+                        <h3>Programming Languages</h3>
+                    </div>
+                    <div class="skill-row-content">
+                        <div class="skill-icon-item" data-tooltip="Python"><i class="devicon-python-plain colored"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Database -->
+                <div class="skill-row">
+                    <div class="skill-row-header">
+                        <div class="skill-icon data-icon"><i class="fa-solid fa-database"></i></div>
+                        <h3>Database</h3>
+                    </div>
+                    <div class="skill-row-content">
+                        <div class="skill-icon-item" data-tooltip="Firebase"><i
+                                class="devicon-firebase-plain colored"></i></div>
+                        <div class="skill-icon-item" data-tooltip="MySQL"><i class="devicon-mysql-plain colored"></i>
+                        </div>
+                        <div class="skill-icon-item" data-tooltip="PostgreSQL"><i
+                                class="devicon-postgresql-plain colored"></i></div>
+                    </div>
+                </div>
+
+                <!-- Soft Skills -->
+                <div class="skill-row">
+                    <div class="skill-row-header">
+                        <div class="skill-icon"><i class="fa-solid fa-users"></i></div>
+                        <h3>Soft Skills</h3>
+                    </div>
+                    <div class="skill-row-content">
+                        <div class="skill-icon-item" data-tooltip="Adaptability"><i class="fa-solid fa-arrows-spin"
+                                style="color: #0ea5e9;"></i></div>
+                        <div class="skill-icon-item" data-tooltip="Team Collaboration"><i
+                                class="fa-solid fa-people-group" style="color: #8b5cf6;"></i></div>
+                        <div class="skill-icon-item" data-tooltip="Communication"><i class="fa-solid fa-comments"
+                                style="color: #10b981;"></i></div>
+                    </div>
                 </div>
             </div>
         </div>
+    </section>
 
-        <!-- Marquee Row 2 (reverse) -->
-        <div class="marquee-wrap">
-            <div class="marquee-track marquee-reverse" id="marquee-2">
-                <div class="marquee-inner">
-                    <div class="logo-card"><img
-                            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jupyter/jupyter-original.svg"
-                            alt="Jupyter"><span>Jupyter</span></div>
-                    <div class="logo-card"><img
-                            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pandas/pandas-original.svg"
-                            alt="Pandas"><span>Pandas</span></div>
-                    <div class="logo-card"><img
-                            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/numpy/numpy-original.svg"
-                            alt="NumPy"><span>NumPy</span></div>
-                    <div class="logo-card"><img
-                            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg"
-                            alt="Firebase"><span>Firebase</span></div>
-                    <div class="logo-card"><img
-                            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg"
-                            alt="Linux"><span>Linux</span></div>
-                    <div class="logo-card"><img
-                            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg"
-                            alt="VSCode"><span>VS Code</span></div>
-                    <div class="logo-card"><img
-                            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg"
-                            alt="GitHub"><span>GitHub</span></div>
-                    <div class="logo-card"><img
-                            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/openCV/opencv-original.svg"
-                            alt="OpenCV"><span>OpenCV</span></div>
-                    <div class="logo-card"><img src="https://huggingface.co/front/assets/huggingface_logo-noborder.svg"
-                            alt="HuggingFace"><span>HuggingFace</span></div>
-                    <div class="logo-card"><img
-                            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/streamlit/streamlit-original.svg"
-                            alt="Streamlit"
-                            onerror="this.src='https://docs.streamlit.io/logo.svg'"><span>Streamlit</span></div>
-                    <div class="logo-card logo-card-icon"><i class="fa-solid fa-database"
-                            style="font-size:2rem;color:#e05a00;"></i><span>Zookeeper</span></div>
-                    <div class="logo-card logo-card-icon"><i class="fa-solid fa-arrows-spin"
-                            style="font-size:2rem;color:#0ea5e9;"></i><span>Debezium</span></div>
-                    <!-- Duplicate -->
-                    <div class="logo-card"><img
-                            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jupyter/jupyter-original.svg"
-                            alt="Jupyter"><span>Jupyter</span></div>
-                    <div class="logo-card"><img
-                            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pandas/pandas-original.svg"
-                            alt="Pandas"><span>Pandas</span></div>
-                    <div class="logo-card"><img
-                            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/numpy/numpy-original.svg"
-                            alt="NumPy"><span>NumPy</span></div>
-                    <div class="logo-card"><img
-                            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg"
-                            alt="Firebase"><span>Firebase</span></div>
-                    <div class="logo-card"><img
-                            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg"
-                            alt="Linux"><span>Linux</span></div>
-                    <div class="logo-card"><img
-                            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg"
-                            alt="VSCode"><span>VS Code</span></div>
-                    <div class="logo-card"><img
-                            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg"
-                            alt="GitHub"><span>GitHub</span></div>
-                    <div class="logo-card"><img
-                            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/openCV/opencv-original.svg"
-                            alt="OpenCV"><span>OpenCV</span></div>
-                    <div class="logo-card"><img src="https://huggingface.co/front/assets/huggingface_logo-noborder.svg"
-                            alt="HuggingFace"><span>HuggingFace</span></div>
-                    <div class="logo-card"><img
-                            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/streamlit/streamlit-original.svg"
-                            alt="Streamlit"
-                            onerror="this.src='https://docs.streamlit.io/logo.svg'"><span>Streamlit</span></div>
-                    <div class="logo-card logo-card-icon"><i class="fa-solid fa-database"
-                            style="font-size:2rem;color:#e05a00;"></i><span>Zookeeper</span></div>
-                    <div class="logo-card logo-card-icon"><i class="fa-solid fa-arrows-spin"
-                            style="font-size:2rem;color:#0ea5e9;"></i><span>Debezium</span></div>
+    <!-- ====== EXPERIENCE ====== -->
+    <section id="experience" class="section experience-section">
+        <div class="container">
+            <h2 class="section-title reveal">Work <span class="gradient-text">Experience</span></h2>
+
+            <div class="exp-card reveal">
+                <div class="exp-card-left">
+                    <div class="exp-role">AI &amp; CyberSecurity Intern</div>
+                    <div class="exp-company"><a href="https://sq1.security/" target="_blank" rel="noopener">SQ1 Security
+                            Private Limited</a></div>
+                    <div class="exp-period">
+                        <i class="fa-regular fa-calendar"></i>
+                        Jun 2025 &ndash; Nov 2025 &nbsp;&middot;&nbsp; 6 months
+                    </div>
+                </div>
+                <div class="exp-card-right">
+                    <div class="exp-domains-label">Domains Explored</div>
+                    <div class="exp-domains">
+                        <span class="exp-domain">RAG Systems</span>
+                        <span class="exp-domain">LLM Orchestration</span>
+                        <span class="exp-domain">Agentic Pipelines</span>
+                        <span class="exp-domain">CVE Intelligence</span>
+                        <span class="exp-domain">Policy Classification</span>
+                        <span class="exp-domain">Semantic Retrieval</span>
+                        <span class="exp-domain">Biomedical NER</span>
+                        <span class="exp-domain">ICD Coding</span>
+                        <span class="exp-domain">MCP Servers</span>
+                        <span class="exp-domain">Zero-Shot NLP</span>
+                        <span class="exp-domain">Vector Search</span>
+                        <span class="exp-domain">Threat Modelling</span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -593,39 +440,49 @@
     <!-- ====== EDUCATION ====== -->
     <section id="education" class="section education-section">
         <div class="container">
-            <div class="section-label">Academic Background</div>
             <h2 class="section-title reveal">Education</h2>
-            <div class="edu-grid reveal">
-                <div class="edu-card edu-card-main">
-                    <div class="edu-icon-wrap"><i class="fa-solid fa-graduation-cap"></i></div>
-                    <div class="edu-info">
-                        <span class="edu-type">Pursuing</span>
-                        <h3>M.Sc. Artificial Intelligence and Machine Learning (Integrated)</h3>
-                        <p class="edu-institution"><a href="https://www.cit.edu.in/" target="_blank" rel="noopener"
-                                style="color:inherit;text-decoration:none;border-bottom:1.5px dotted currentColor;">Coimbatore
+            <div class="edu-timeline reveal">
+
+                <div class="edu-entry primary">
+                    <div class="edu-year-block">
+                        <span class="edu-year">2022</span>
+                        <span class="edu-year-end">Present</span>
+                    </div>
+                    <div class="edu-connector">
+                        <div class="edu-node"></div>
+                        <div class="edu-line"></div>
+                    </div>
+                    <div class="edu-details">
+                        <div class="edu-tag">Pursuing · Integrated M.Sc.</div>
+                        <h3>Artificial Intelligence &amp; Machine Learning</h3>
+                        <p class="edu-inst"><a href="https://www.cit.edu.in/" target="_blank" rel="noopener">Coimbatore
                                 Institute of Technology</a></p>
-                        <div class="edu-meta">
-                            <span><i class="fa-regular fa-calendar"></i> 2022 – Present</span>
-                            <span class="edu-cgpa"><i class="fa-solid fa-star"></i> CGPA: 8.63 (Till 7th
-                                Semester)</span>
+                        <div class="edu-badge-row">
+                            <span class="edu-badge gpa">CGPA &nbsp;<strong>8.63</strong> / 10</span>
+                            <span class="edu-badge track">Sem 7 of 10</span>
                         </div>
                     </div>
                 </div>
-                <div class="edu-card">
-                    <div class="edu-icon-wrap"><i class="fa-solid fa-school"></i></div>
-                    <div class="edu-info">
-                        <span class="edu-type">Completed</span>
-                        <h3>Higher Secondary Education (HSC)</h3>
-                        <p class="edu-institution"><a href="https://mahendra.org/schools/mmhss_ka.html" target="_blank"
-                                rel="noopener"
-                                style="color:inherit;text-decoration:none;border-bottom:1.5px dotted currentColor;">Mahendra
-                                Matric Hr Sec School, Namakkal</a></p>
-                        <div class="edu-meta">
-                            <span><i class="fa-regular fa-calendar"></i> 2021 – 2022</span>
-                            <span class="edu-cgpa"><i class="fa-solid fa-star"></i> 89.4%</span>
+
+                <div class="edu-entry">
+                    <div class="edu-year-block">
+                        <span class="edu-year">2021</span>
+                        <span class="edu-year-end">2022</span>
+                    </div>
+                    <div class="edu-connector">
+                        <div class="edu-node"></div>
+                    </div>
+                    <div class="edu-details">
+                        <div class="edu-tag">Completed · HSC</div>
+                        <h3>Higher Secondary Education</h3>
+                        <p class="edu-inst"><a href="https://mahendra.org/schools/mmhss_ka.html" target="_blank"
+                                rel="noopener">Mahendra Matric Hr Sec School, Namakkal</a></p>
+                        <div class="edu-badge-row">
+                            <span class="edu-badge gpa">Score &nbsp;<strong>89.4%</strong></span>
                         </div>
                     </div>
                 </div>
+
             </div>
         </div>
     </section>
@@ -689,10 +546,118 @@
     <!-- ====== FOOTER ====== -->
     <footer class="footer">
         <div class="container footer-inner">
-            <p>Designed & built by <strong>Sanjeevikumar S</strong> &nbsp;·&nbsp; 2026</p>
-            <p class="mono">Building AI systems that are hard to fool, hard to drift, and easy to trust.</p>
+            <p>Designed &amp; built by <strong>Sanjeevikumar S</strong> &nbsp;&middot;&nbsp; 2026</p>
+            <div class="footer-terminal">
+                <span class="term-ps1">sanjeev@ai-lab:~$</span>
+                <span>git push origin main --force-with-lease</span>
+                <span class="term-cursor"></span>
+            </div>
         </div>
     </footer>
+
+    <!-- ====== XAN COMPANION (SCORPION) ====== -->
+    <div id="xan-companion" class="xan-companion" aria-label="Chat with Xan AI">
+        <div id="scorp-rotator">
+            <div id="xan-scorpio-anim-container">
+                <svg id="xan-scorpio-svg" viewBox="-80 -100 160 220" width="80" height="110">
+                    <defs>
+                        <filter id="neonGlow2" x="-50%" y="-50%" width="200%" height="200%">
+                            <feGaussianBlur in="SourceGraphic" stdDeviation="3" result="blur1" />
+                            <feGaussianBlur in="SourceGraphic" stdDeviation="8" result="blur2" />
+                            <feMerge>
+                                <feMergeNode in="blur2" />
+                                <feMergeNode in="blur1" />
+                                <feMergeNode in="SourceGraphic" />
+                            </feMerge>
+                        </filter>
+                        <linearGradient id="scorpGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#38bdf8" />
+                            <stop offset="50%" stop-color="#7c3aed" />
+                            <stop offset="100%" stop-color="#ec4899" />
+                        </linearGradient>
+                    </defs>
+                    <g filter="url(#neonGlow2)" stroke="url(#scorpGrad2)" stroke-width="2.5" fill="rgba(13,17,32,0.8)"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <g transform="translate(-15, -10)">
+                            <g class="sc-leg l1">
+                                <path d="M0,0 L-25,-20 L-40,-5" fill="none" />
+                            </g>
+                        </g>
+                        <g transform="translate(-16, 2)">
+                            <g class="sc-leg l2">
+                                <path d="M0,0 L-30,-5 L-45,15" fill="none" />
+                            </g>
+                        </g>
+                        <g transform="translate(-15, 14)">
+                            <g class="sc-leg l3">
+                                <path d="M0,0 L-28,10 L-40,30" fill="none" />
+                            </g>
+                        </g>
+                        <g transform="translate(-12, 26)">
+                            <g class="sc-leg l4">
+                                <path d="M0,0 L-20,20 L-30,45" fill="none" />
+                            </g>
+                        </g>
+                        <g transform="translate(15, -10)">
+                            <g class="sc-leg r1">
+                                <path d="M0,0 L25,-20 L40,-5" fill="none" />
+                            </g>
+                        </g>
+                        <g transform="translate(16, 2)">
+                            <g class="sc-leg r2">
+                                <path d="M0,0 L30,-5 L45,15" fill="none" />
+                            </g>
+                        </g>
+                        <g transform="translate(15, 14)">
+                            <g class="sc-leg r3">
+                                <path d="M0,0 L28,10 L40,30" fill="none" />
+                            </g>
+                        </g>
+                        <g transform="translate(12, 26)">
+                            <g class="sc-leg r4">
+                                <path d="M0,0 L20,20 L30,45" fill="none" />
+                            </g>
+                        </g>
+                        <g class="sc-arm left" transform="translate(-12, -25)">
+                            <path d="M0,0 L-20,-25 L-10,-45" fill="none" />
+                            <g transform="translate(-10, -45)">
+                                <g class="sc-pincer-inner">
+                                    <path d="M0,0 C-5,-10 5,-25 15,-20 C10,-15 5,-5 0,0" fill="rgba(56,189,248,0.3)" />
+                                </g>
+                                <g class="sc-pincer-outer">
+                                    <path d="M0,0 C-15,-10 -20,-25 -10,-35 C-5,-25 -5,-10 0,0"
+                                        fill="rgba(124,58,237,0.3)" />
+                                </g>
+                            </g>
+                        </g>
+                        <g class="sc-arm right" transform="translate(12, -25)">
+                            <path d="M0,0 L20,-25 L10,-45" fill="none" />
+                            <g transform="translate(10, -45)">
+                                <g class="sc-pincer-inner">
+                                    <path d="M0,0 C5,-10 -5,-25 -15,-20 C-10,-15 -5,-5 0,0"
+                                        fill="rgba(56,189,248,0.3)" />
+                                </g>
+                                <g class="sc-pincer-outer">
+                                    <path d="M0,0 C15,-10 20,-25 10,-35 C5,-25 5,-10 0,0" fill="rgba(124,58,237,0.3)" />
+                                </g>
+                            </g>
+                        </g>
+                        <g transform="translate(0, 30)">
+                            <g class="sc-tail">
+                                <path d="M0,0 Q10,15 0,35 Q-10,55 0,80" fill="none" stroke-width="4" />
+                                <path d="M-6,80 L6,80 L0,105 Z" fill="rgba(56,189,248,0.5)" />
+                            </g>
+                        </g>
+                        <path d="M-12,-25 Q0,-35 12,-25 L16,15 Q0,40 -16,15 Z" />
+                        <path d="M-6,-15 L6,-15 L10,5 L0,20 L-10,5 Z" fill="rgba(124,58,237,0.4)" stroke-width="1.5" />
+                        <circle cx="-5" cy="-22" r="2.5" fill="#38bdf8" stroke="none" />
+                        <circle cx="5" cy="-22" r="2.5" fill="#38bdf8" stroke="none" />
+                    </g>
+                </svg>
+            </div>
+        </div>
+        <span class="xan-tooltip">Ask <strong>Xan</strong></span>
+    </div>
 
     <!-- ====== XAN CHATBOX MODAL ====== -->
     <div id="xan-chat-modal" class="xan-chat-modal">
@@ -701,14 +666,21 @@
                 <div class="xan-header-icon"><i class="fa-solid fa-microchip"></i></div>
                 <div>
                     <h4>Xan</h4>
+                    <span class="xan-status"><span class="xan-status-dot"></span> Online</span>
                 </div>
             </div>
             <button id="xan-close-btn" class="xan-close-btn"><i class="fa-solid fa-xmark"></i></button>
         </div>
         <div id="xan-chat-messages" class="xan-chat-messages">
             <div class="xan-message xan-ai">
-                Hey! I'm <strong>Xan</strong> — ask me anything about Sanjeev’s work.
+                Hey! I'm <strong>Xan</strong> — Sanjeev's AI. Ask me anything about his work, projects, or skills.
             </div>
+        </div>
+        <div class="xan-chips" id="xan-chips">
+            <button class="xan-chip">What projects has he built?</button>
+            <button class="xan-chip">Tell me about his experience</button>
+            <button class="xan-chip">What are his top skills?</button>
+            <button class="xan-chip">Is he open to work?</button>
         </div>
         <div class="xan-chat-input-area">
             <input type="text" id="xan-chat-input" placeholder="Ask about his experience or skills..."
@@ -717,7 +689,9 @@
         </div>
     </div>
 
-    <script src="script.js"></script>
+    <script src="script.js?v=7"></script>
+
+
 </body>
 
 </html>

@@ -1,118 +1,68 @@
 
 # Sanjeevikumar S - Portfolio Website
 
-A modern, professional portfolio website built with React, showcasing AI/ML projects and expertise.
+A modern, professional portfolio website built with pure HTML/JS, featuring an AI companion backend powered by FastAPI.
 
 ## 🚀 Features
 
-- **React-based Architecture** - Component-based, maintainable code
-- **Smooth Animations** - Powered by Framer Motion for engaging user experience
-- **Responsive Design** - Optimized for all devices (mobile, tablet, desktop)
-- **Dynamic Content** - Easy to update projects and skills
-- **Professional Theme** - Modern dark blue/cyan aesthetic
-- **Performance Optimized** - Fast loading and smooth scrolling
+- **Vanilla JavaScript Architecture** - Lightweight, blazing fast, and zero build steps required.
+- **AI Chat Companion (Xan)** - Python FastAPI backend integrated with the Groq API.
+- **Smooth Animations** - Custom CSS keyframe animations and intersection observers.
+- **Responsive Design** - Optimized for all devices (mobile, tablet, desktop).
+- **Professional Theme** - Modern dark blue/cyan aesthetic with glassmorphism.
 
 ## 🛠️ Technologies Used
 
-- React 18
-- Framer Motion (animations)
-- React Icons
-- React Intersection Observer
-- CSS3 (modern styling)
+- Vanilla HTML5 / CSS3 / JavaScript
+- Python 3.x
+- FastAPI & Uvicorn
+- Groq API (`llama3` model)
 
-## 📦 Installation
+## 📦 Local Setup & Installation
 
-1. Clone the repository:
+### 1. Clone the repository:
 ```bash
 git clone <your-repo-url>
 cd portfolio
 ```
 
-2. Install dependencies:
-```bash
-npm install
+### 2. Configure Environment Variables
+Create a `.env.local` file in the root directory and add your Groq API key:
+```env
+GROQ_API_KEY=your_groq_api_key_here
 ```
 
-3. Start the development server:
+### 3. Start the Backend API
+Install the Python dependencies and start the FastAPI server:
 ```bash
-npm start
+pip install -r api/requirements.txt
+uvicorn api.index:app --reload --env-file .env.local
 ```
 
-The app will open at [http://localhost:3000](http://localhost:3000)
+### 4. Open the Website
+Simply double-click `index.html` to open it in your browser, or use VS Code's Live Server. The frontend automatically detects local development and connects to `http://127.0.0.1:8000`.
 
-## 🏗️ Build for Production
+## 🚢 Deployment (Vercel)
 
-```bash
-npm run build
-```
+This project is configured for seamless deployment on Vercel utilizing Vercel's Serverless Python Functions (`vercel.json` included).
 
-This creates an optimized production build in the `build` folder.
-
-## 🚢 Deployment
-
-### Deploy to Vercel
-
-1. Push your code to GitHub
-2. Import your repository in [Vercel](https://vercel.com)
-3. Vercel will automatically detect React and deploy
-
-Or use Vercel CLI:
-```bash
-npm i -g vercel
-vercel
-```
-
-### Deploy to Other Platforms
-
-The `build` folder contains static files that can be deployed to:
-- Netlify
-- GitHub Pages
-- AWS S3
-- Any static hosting service
+1. Push your code to GitHub.
+2. Import the repository in [Vercel](https://vercel.com).
+3. Add your `GROQ_API_KEY` to Vercel's Environment Variables.
+4. Deploy!
 
 ## 📁 Project Structure
 
-```
+```text
 portfolio/
-├── public/
-│   ├── index.html
-│   └── my_picture.JPG
-├── src/
-│   ├── components/
-│   │   ├── Navbar.js
-│   │   ├── Hero.js
-│   │   ├── About.js
-│   │   ├── Skills.js
-│   │   ├── Projects.js
-│   │   └── Footer.js
-│   ├── App.js
-│   ├── App.css
-│   ├── index.js
-│   └── index.css
-├── package.json
+├── api/                   # Python FastAPI Backend
+│   ├── index.py           # Main serverless function
+│   └── requirements.txt   # Python dependencies
+├── index.html             # Main portfolio webpage
+├── script.js              # Frontend logic and AI chat handling
+├── styles.css             # Styling and animations
+├── vercel.json            # Vercel serverless configuration
 └── README.md
-```
-
-## 🎨 Customization
-
-### Update Personal Information
-
-Edit the following files:
-- `src/components/Hero.js` - Name, title, description
-- `src/components/About.js` - About section content
-- `src/components/Skills.js` - Skills and technologies
-- `src/components/Projects.js` - Featured projects
-
-### Change Theme Colors
-
-Edit CSS variables in `src/index.css`:
-```css
-:root {
-    --primary-color: #0891b2;
-    --secondary-color: #06b6d4;
-    --accent-color: #14b8a6;
-    /* ... */
-}
 ```
 
 ## 📝 License
