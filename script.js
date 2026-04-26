@@ -100,6 +100,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Initial call after tiny delay so layout is ready
     setTimeout(setActiveNavLink, 200);
 
+
     // Xan chip click handler
     const xanChips = document.querySelectorAll('.xan-chip');
     const xanChipsContainer = document.getElementById('xan-chips');
